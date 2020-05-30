@@ -443,7 +443,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   height: 10
   width: 10
+  cellSize: 5
   main: {fileID: 855975911}
+  gridOriginPosition: {x: 50, y: 50, z: 0}
 --- !u!4 &728350178
 Transform:
   m_ObjectHideFlags: 0

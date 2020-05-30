@@ -7,11 +7,14 @@ public class Testgrid : MonoBehaviour
 {
     public int height;
     public int width;
-    Grid grid;
+    public int cellSize;
     public Camera main;
+    Grid grid;
+    public Vector3 gridOriginPosition;
+
     private void Start()
     {
-        grid = new Grid(width, height, 10);
+        grid = new Grid(width, height, cellSize, gridOriginPosition);
     }
 
     private void Update()
