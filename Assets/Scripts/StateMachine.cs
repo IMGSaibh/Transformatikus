@@ -27,9 +27,6 @@ public class StateMachine : MonoBehaviour
 
     }
 
-
-
-
     // Update is called once per frame
     private void Update()
     {

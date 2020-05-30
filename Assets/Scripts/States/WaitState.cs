@@ -12,7 +12,8 @@ public class WaitState : BaseState
     {
         base.PrepareState();
         // Randomize waiting time.
-        waitTime = Random.Range(minWait, 2.5f);
+        waitTime = 1f;
+        //Random.Range(minWait, 5.5f);
     }
 
     public override void UpdateState()
