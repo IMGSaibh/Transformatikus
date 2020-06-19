@@ -1,105 +1,121 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel.Design;
 using UnityEngine;
 
-public class Grid
+public class Grid : MonoBehaviour
 {
+    //public GameObject plane;
 
-    private int gridWidth;
-    private int gridHeight;
-    private int gridCellSize;
-    private Vector3 gridOriginPosition;
+    public bool showMain = true;
+    public bool showSub = false;
 
-    private int[,] gridArray;
-    private TextMesh[,] debugTextArray;
+    public int gridSizeX;
+    public int gridSizeY;
+    public int gridSizeZ;
 
-    public Grid(int width, int height, int cellSize, Vector3 originPosition) 
+    public float smallStep;
+    public float largeStep;
+
+    public float startX;
+    public float startY;
+    public float startZ;
+
+    public Color mainColor = new Color(0f, 1f, 0f, 1f);
+    public Color subColor = new Color(0f, 0.5f, 0f, 1f);
+
+    private void Start()
     {
-        gridWidth = width;
-        gridHeight = height;
-        gridCellSize = cellSize;
-        gridOriginPosition = originPosition;
+        
+        Vector3 p = GetComponent<Camera>().ScreenToWorldPoint(new Vector3(0, GetComponent<Camera>().pixelHeight, GetComponent<Camera>().nearClipPlane));
+        startX = p.x;
+        startY = -p.y;
+    }
 
-        gridArray = new int[gridWidth, gridHeight];
-        debugTextArray = new TextMesh[gridWidth, gridHeight];
+    void OnPostRender()
+    {
+        if (smallStep < 0.1f)
+        {
+            smallStep = 0.1f;
+        }
 
-        for (int x = 0; x < gridArray.GetLength(0); x++)
-            for (int y = 0; y < gridArray.GetLength(1); y++)
+        if (largeStep < 0.1f)
+        {
+            largeStep = 0.1f;
+        }
+        //CreateLineMaterial();
+        // set the current material
+        //lineMaterial.SetPass(0);
+
+        GL.Begin(GL.LINES);
+
+        if (showSub)
+        {
+            GL.Color(subColor);
+
+            //Layers
+            for (float j = 0; j <= gridSizeY; j += smallStep)
             {
-                debugTextArray[x,y] = CreateWorldText(gridArray[x, y].ToString(), GetWorldPosition(x, y) + new Vector3(cellSize, cellSize) * 0.5f, 20, Color.white, TextAnchor.MiddleCenter);
+                //X axis lines
+                for (float i = 0; i <= gridSizeZ; i += smallStep)
+                {
+                    GL.Vertex3(startX, startY + j, startZ + i);
+                    GL.Vertex3(startX + gridSizeX, startY + j, startZ + i);
+                }
 
-                Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x, y + 1), Color.white, 100f);
-                Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x + 1, y), Color.white, 100f);
+                //Z axis lines
+                for (float i = 0; i <= gridSizeX; i += smallStep)
+                {
+                    GL.Vertex3(startX + i, startY + j, startZ);
+                    GL.Vertex3(startX + i, startY + j, startZ + gridSizeZ);
+                }
             }
 
-        Debug.DrawLine(GetWorldPosition(0, height), GetWorldPosition(width, height), Color.white, 100f);
-        Debug.DrawLine(GetWorldPosition(width, 0), GetWorldPosition(width, height), Color.white, 100f);
-
-    }
-
-
-  
-
-    private Vector3 GetWorldPosition(int x, int y) 
-    {
-        return new Vector3(x, y) * gridCellSize + gridOriginPosition;
-    }
-
-    private void GetXY(Vector3 worldPosition, out int x, out int y) 
-    {
-        x = Mathf.FloorToInt((worldPosition - gridOriginPosition).x / gridCellSize);
-        y = Mathf.FloorToInt((worldPosition - gridOriginPosition).y / gridCellSize);
-
-    }
-
-    public void SetValue(int x, int y, int value)
-    {
-        if (x >= 0 && y >= 0 && x < gridWidth && y < gridHeight)
-        {
-            gridArray[x, y] = value;
-            debugTextArray[x, y].text = gridArray[x, y].ToString();
-
+            //Y axis lines
+            for (float i = 0; i <= gridSizeZ; i += smallStep)
+            {
+                for (float k = 0; k <= gridSizeX; k += smallStep)
+                {
+                    GL.Vertex3(startX + k, startY, startZ + i);
+                    GL.Vertex3(startX + k, startY + gridSizeY, startZ + i);
+                }
+            }
         }
+
+        if (showMain)
+        {
+            GL.Color(mainColor);
+
+            //Layers
+            for (float j = 0; j <= gridSizeY; j += largeStep)
+            {
+                //X axis lines
+                for (float i = 0; i <= gridSizeZ; i += largeStep)
+                {
+                    GL.Vertex3(startX, startY + j, startZ + i);
+                    GL.Vertex3(startX + gridSizeX, startY + j, startZ + i);
+                }
+
+                //Z axis lines
+                for (float i = 0; i <= gridSizeX; i += largeStep)
+                {
+                    GL.Vertex3(startX + i, startY + j, startZ);
+                    GL.Vertex3(startX + i, startY + j, startZ + gridSizeZ);
+                }
+            }
+
+            //Y axis lines
+            for (float i = 0; i <= gridSizeZ; i += largeStep)
+            {
+                for (float k = 0; k <= gridSizeX; k += largeStep)
+                {
+                    GL.Vertex3(startX + k, startY, startZ + i);
+                    GL.Vertex3(startX + k, startY + gridSizeY, startZ + i);
+                }
+            }
+        }
+
+
+        GL.End();
     }
-    public void SetValue(Vector3 worldPosition, int value) 
-    {
-        int x, y;
-        GetXY(worldPosition, out x, out y);
-        SetValue(x, y, value);
-    }
-
-    public int GetValue(int x, int y) 
-    {
-        if (x >= 0 && y >= 0 && x < gridWidth && y < gridHeight)
-            return gridArray[x, y];
-        else
-            return 0;
-    }
-
-    public int GetValue(Vector3 worldPosition) 
-    {
-        int x, y;
-        GetXY(worldPosition, out x, out y);
-        return GetValue(x, y);
-    
-    }
-
-
-
-
-    public static TextMesh CreateWorldText(string text, Vector2 localPosition, int fontSize, Color color, TextAnchor textAnchor) 
-    {
-        GameObject gameObject = new GameObject("Worldtext", typeof(TextMesh));
-        gameObject.GetComponent<MeshRenderer>().sortingLayerName = "Playersprite";
-        gameObject.transform.position = localPosition;
-        TextMesh textMesh = gameObject.GetComponent<TextMesh>();
-        textMesh.anchor = textAnchor;
-        textMesh.text = text;
-        textMesh.fontSize = fontSize;
-        textMesh.color = color;
-
-        return textMesh;
-    }
-
 }
+
