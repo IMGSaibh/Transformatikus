@@ -6,40 +6,53 @@ public class KoordSystemGrid : MonoBehaviour
 
     public int gridSizeX = 30;
     public int gridSizeY = 16;
-    public int gridSizeZ;
+    public int gridSizeZ = 0;
 
     [Range(1f,10f)]
     public float stepSize = 1;
 
-    public float startX = -15;
-    public float startY = -8;
-    public float startZ;
+    public float textScale = 0.02f;
 
-    float unitX = 0;
-    float unitY = 0;
+    public float startX = 0;
+    public float startY = 0;
+    public float startZ = 0;
+
+
+    public int unitLength = 1;
 
     private void Start()
     {
-        for (float i = 0; i <= gridSizeX; i++)
+        startX = transform.position.x;
+        startY = transform.position.y;
+
+
+        int unitCountX = 0;
+        int unitCountY = 0;
+
+
+        for (float i = 0; i <= gridSizeX; i += unitLength)
         {
-            unitX = startX + i;
-            CreateWorldText(i.ToString(), new Vector2(unitX, -8),8, Color.black, TextAnchor.UpperCenter);
+            CreateWorldText(unitCountX.ToString(), new Vector2(transform.position.x + i, transform.position.y),300, Color.black, TextAnchor.UpperCenter, textScale);
+            unitCountX++;
         }
 
-        for (float i = 0; i <= gridSizeY; i++)
+        for (float i = 0; i <= gridSizeY; i += unitLength)
         {
-            unitY = startY + i;
-            CreateWorldText(i.ToString(), new Vector2(startX,unitY), 8, Color.black, TextAnchor.UpperLeft);
+            CreateWorldText(unitCountY.ToString(), new Vector2(transform.position.x - 0.5f, transform.position.y + i), 300, Color.black, TextAnchor.MiddleCenter, textScale);
+            unitCountY++;
+
         }
     }
 
-    void OnPostRender()
+    private void OnRenderObject()
     {
         if (!mat)
         {
             Debug.LogError("Please Assign a material on the inspector");
             return;
         }
+
+ 
 
         GL.PushMatrix();
         mat.SetPass(0);
@@ -73,19 +86,18 @@ public class KoordSystemGrid : MonoBehaviour
                 GL.Vertex3(startX + k, startY + gridSizeY, startZ + i);
             }
         }
-        
+
 
         GL.End();
         GL.PopMatrix();
-
     }
 
-
-    public static TextMesh CreateWorldText(string text, Vector2 localPosition, int fontSize, Color color, TextAnchor textAnchor)
+    public static TextMesh CreateWorldText(string text, Vector2 localPosition, int fontSize, Color color, TextAnchor textAnchor, float scale)
     {
         GameObject gameObject = new GameObject("Worldtext", typeof(TextMesh));
         gameObject.GetComponent<MeshRenderer>().sortingLayerName = "Playersprite";
         gameObject.transform.position = localPosition;
+        gameObject.transform.localScale = new Vector3(scale, scale, scale);
         TextMesh textMesh = gameObject.GetComponent<TextMesh>();
         textMesh.anchor = textAnchor;
         textMesh.text = text;

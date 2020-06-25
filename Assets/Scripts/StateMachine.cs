@@ -5,11 +5,11 @@ public class StateMachine : MonoBehaviour
     // Reference to currently operating state.
     private BaseState currentState;
 
-
     // Reference to movement script of IP-Paket-Piece.
     [SerializeField]
-    private Movement movement;
-    public Movement Movement => movement;
+    private Translation translationObject;
+    public Translation TranslationObject => translationObject;
+
 
     private void Start() 
     {
