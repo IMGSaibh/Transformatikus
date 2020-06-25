@@ -11,6 +11,8 @@ public class StateMachine : MonoBehaviour
     public Translation TranslationObject => translationObject;
 
 
+
+
     private void Start() 
     {
         //create new state like this

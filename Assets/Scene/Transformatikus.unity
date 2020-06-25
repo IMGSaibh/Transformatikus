@@ -127,6 +127,32 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1539271083}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &76868216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 76868215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c335be280b9a6043997696e30125ae7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 10
+--- !u!114 &76868217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 76868215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d8951d351f5a7f4597d77dba4c06c3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationObject: {fileID: 76868216}
 --- !u!114 &76868219
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,7 +162,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 76868215}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3953981aeea8c46e796ef255c4fc3177, type: 3}
+  m_Script: {fileID: 11500000, guid: 6c05f77045122e544a59f39b5abfe788, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pseudoWorldCoordinateSystem: {fileID: 1761819568}
@@ -171,14 +197,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98204bf9599f9fd44adc9876e52f745d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mat: {fileID: 2100000, guid: c460adb4982035847b1498f7c0d79949, type: 2}
+  mat: {fileID: 2100000, guid: 6feb827dc8feba6498e64d9dd8e4dd45, type: 2}
   gridSizeX: 30
   gridSizeY: 16
   gridSizeZ: 0
   stepSize: 1
-  startX: -15
+  textScale: 0.02
+  startX: -23
   startY: -8
   startZ: 0
+  unitLength: 1
 --- !u!81 &268090612
 AudioListener:
   m_ObjectHideFlags: 0
@@ -592,7 +620,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1761819568}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e684a67eb5834d4a91da65a027aea7b, type: 3}
+  m_Script: {fileID: 11500000, guid: 8ae4a816a73415a428ea7814be1f8306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   XYebene: 1
