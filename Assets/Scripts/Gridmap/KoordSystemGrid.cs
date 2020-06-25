@@ -22,23 +22,33 @@ public class KoordSystemGrid : MonoBehaviour
 
     private void Start()
     {
-        startX = transform.position.x;
-        startY = transform.position.y;
-
 
         int unitCountX = 0;
         int unitCountY = 0;
 
 
+        //for (float i = 0; i <= gridSizeX; i += unitLength)
+        //{
+        //    CreateWorldText(unitCountX.ToString(), new Vector2(transform.position.x + i, transform.position.y - 0.5f),300, Color.black, TextAnchor.MiddleCenter, textScale);
+        //    unitCountX++;
+        //}
+
+        //for (float i = 0; i <= gridSizeY; i += unitLength)
+        //{
+        //    CreateWorldText(unitCountY.ToString(), new Vector2(transform.position.x - 0.5f, transform.position.y + i), 300, Color.black, TextAnchor.MiddleCenter, textScale);
+        //    unitCountY++;
+
+        //}
+
         for (float i = 0; i <= gridSizeX; i += unitLength)
         {
-            CreateWorldText(unitCountX.ToString(), new Vector2(transform.position.x + i, transform.position.y - 0.5f),300, Color.black, TextAnchor.MiddleCenter, textScale);
+            CreateWorldText(unitCountX.ToString(), new Vector2(startX + i,startY - 0.5f), 300, Color.black, TextAnchor.MiddleCenter, textScale);
             unitCountX++;
         }
 
         for (float i = 0; i <= gridSizeY; i += unitLength)
         {
-            CreateWorldText(unitCountY.ToString(), new Vector2(transform.position.x - 0.5f, transform.position.y + i), 300, Color.black, TextAnchor.MiddleCenter, textScale);
+            CreateWorldText(unitCountY.ToString(), new Vector2(startX - 0.5f, startY + i), 300, Color.black, TextAnchor.MiddleCenter, textScale);
             unitCountY++;
 
         }
