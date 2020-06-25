@@ -10,29 +10,27 @@ public class MoveState : BaseState
     {
         base.PrepareState();
 
-        //start position of IP-Paket-Piece
-
-        targetPosition = new Vector3(1, 0, 0);
+        //target position of IP-Paket-Piece and position of IP-Packet
+        targetPosition = new Vector3(8, 0, 0);
     }
 
     public override void UpdateState()
     {
         base.UpdateState();
+
+        Debug.Log("Move State");
+
         // Calculating the movement of IP-Packet-Piece
         Vector3 direction = targetPosition - stateMachineOwner.transform.position;
-        if (direction.magnitude > 1)
-        {
-            direction.Normalize();
-        }
 
         // Passing calculation to Movement component
         stateMachineOwner.TranslationObject.MoveTo(direction);
 
-        // Destination reached!
-        if (direction.magnitude < 0.1f)
+        if (targetPosition == stateMachineOwner.transform.position)
         {
-            // Now wait!
+            Debug.Log("Ziel erreicht");
             stateMachineOwner.ChangeState(new WaitState());
+
         }
     }
 

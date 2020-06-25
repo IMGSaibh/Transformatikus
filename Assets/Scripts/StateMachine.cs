@@ -18,8 +18,7 @@ public class StateMachine : MonoBehaviour
 
         //configure state is also possible
         WaitState waitState = new WaitState();
-        waitState.minWait = 2;
-
+ 
         //last pass the state
         ChangeState(waitState);
 

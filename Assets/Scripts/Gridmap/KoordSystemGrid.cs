@@ -32,7 +32,7 @@ public class KoordSystemGrid : MonoBehaviour
 
         for (float i = 0; i <= gridSizeX; i += unitLength)
         {
-            CreateWorldText(unitCountX.ToString(), new Vector2(transform.position.x + i, transform.position.y),300, Color.black, TextAnchor.UpperCenter, textScale);
+            CreateWorldText(unitCountX.ToString(), new Vector2(transform.position.x + i, transform.position.y - 0.5f),300, Color.black, TextAnchor.MiddleCenter, textScale);
             unitCountX++;
         }
 
@@ -51,8 +51,6 @@ public class KoordSystemGrid : MonoBehaviour
             Debug.LogError("Please Assign a material on the inspector");
             return;
         }
-
- 
 
         GL.PushMatrix();
         mat.SetPass(0);

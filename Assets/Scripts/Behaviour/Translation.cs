@@ -30,9 +30,6 @@ public class Translation : MonoBehaviour
     /// <param name="input">Input - direciton.</param>
     public void MoveTo(Vector3 input)
     {
-        if (input.magnitude > 1)
-            input.Normalize();
-
         this.input = input;
     }
 

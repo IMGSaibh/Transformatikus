@@ -4,26 +4,21 @@ using UnityEngine;
 
 public class WaitState : BaseState
 {
-    public float minWait = 1;
-    public float waitTime;
 
     // we can use this as level transition
     public override void PrepareState()
     {
         base.PrepareState();
-        // Randomize waiting time.
-        waitTime = 1f;
-        //Random.Range(minWait, 5.5f);
     }
 
     public override void UpdateState()
     {
         base.UpdateState();
-        // After each frame we are subtracting time that passed.
-        waitTime -= Time.deltaTime;
 
-        // When wait time is over it's time to change state!
-        if (waitTime < 0)
+        Debug.Log("Wait State");
+
+        //When cube is placed on table do somthing
+        if (Input.GetKeyDown(KeyCode.M))
             stateMachineOwner.ChangeState(new MoveState());
     }
 }
