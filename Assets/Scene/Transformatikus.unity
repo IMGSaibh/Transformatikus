@@ -277,6 +277,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 2338979111475473305, guid: db0837d6d6d734ed6921ef21514ca736,
+        type: 3}
+      propertyPath: m_Name
+      value: Cube1Text
+      objectReference: {fileID: 0}
     - target: {fileID: 2338979111540326291, guid: db0837d6d6d734ed6921ef21514ca736,
         type: 3}
       propertyPath: m_IsActive
@@ -315,6 +320,11 @@ PrefabInstance:
     - target: {fileID: 2338979112607202169, guid: db0837d6d6d734ed6921ef21514ca736,
         type: 3}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2338979113098163374, guid: db0837d6d6d734ed6921ef21514ca736,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2338979113190168080, guid: db0837d6d6d734ed6921ef21514ca736,
@@ -922,7 +932,7 @@ PrefabInstance:
     - target: {fileID: 334942186603069218, guid: b5cef862891fd49dd839275e0febf620,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 334942186603069219, guid: b5cef862891fd49dd839275e0febf620,
         type: 3}

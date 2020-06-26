@@ -13,20 +13,35 @@ namespace MarkerBasedARExample
         public GameObject item;
 
         public IntMatrix transformationMatrix;
-
-        private Matrix4x4 transMatrix;
-
+        
+        /// <summary>
+        /// the translation vector.
+        /// </summary>
         public Vector3 transVector;
-
+        
+        /// <summary>
+        /// the scale vector.
+        /// </summary>
         public Vector3 scaleVector;
         
+        /// <summary>
+        /// the rotation axis vector.
+        /// </summary>
         public Vector3 rotationAxisVector;
 
+        /// <summary>
+        /// alpha for rotation.
+        /// </summary>
         public float alpha;
 
+        /// <summary>
+        /// the transformation.
+        /// </summary>
         public Transformation testTrans;
 
-        //für den Zylinder
+        /// <summary>
+        /// cylinder object.
+        /// </summary>
         public CylinderTransformation cylinderObject;
 
         // Start is called before the first frame update
@@ -45,14 +60,12 @@ namespace MarkerBasedARExample
                 {
                     case IntMatrix.ElementTypes.Objekt:
                     {
-                        testTrans = new Objekt();
-
+                        //testTrans = new Objekt();
                         break;
                     }
                     case IntMatrix.ElementTypes.Pivot:
                     {
-                        testTrans = new Pivot();
-
+                        //testTrans = new Pivot();
                         break;
                     }
                     case IntMatrix.ElementTypes.Vector:
@@ -74,9 +87,7 @@ namespace MarkerBasedARExample
                             Vector3 translationVector = new Vector3(alpha, 0f, 0f);
                             
                             this.transVector = new Vector3(alpha, 0f, 0f);
-
-                            //vectorTransformation = new VectorTransformation(vector, translationVector);
-
+                            
                             testTrans = new Vector(vector, translationVector);
                         }
 
@@ -304,6 +315,7 @@ namespace MarkerBasedARExample
                             this.alpha = cylinderObject.testTrans.skalar;
                             this.rotationAxisVector = new Vector3(1.0f, 0.0f, 0.0f);
 
+                            //the textual representation
                             String[] matrix =
                             {
                                 "    1    ", "    0    ", "    0    ",
@@ -317,7 +329,7 @@ namespace MarkerBasedARExample
                             Vector4 column3 = new Vector4(0f, (float) Math.Sin(this.alpha), (float) Math.Cos(this.alpha), 0f);
                             Vector4 column4 = new Vector4(0f, 0f, 0f, 1f);
 
-                            transMatrix = new Matrix4x4(column1, column2, column3, column4);
+                            Matrix4x4 transMatrix = new Matrix4x4(column1, column2, column3, column4);
 
                             testTrans = new Matrix(matrix, transMatrix);
                         }
@@ -329,6 +341,7 @@ namespace MarkerBasedARExample
                             //else set ? for the value
                             String alpha = "?";
                             
+                            //the textual representation
                             String[] matrix =
                             {
                                 "    1    ", "    0    ", "    0    ",
@@ -341,7 +354,7 @@ namespace MarkerBasedARExample
                             Vector4 column3 = new Vector4(0f, 0f, 1f, 0f);
                             Vector4 column4 = new Vector4(0f, 0f, 0f, 1f);
 
-                            transMatrix = new Matrix4x4(column1, column2, column3, column4);
+                            Matrix4x4 transMatrix = new Matrix4x4(column1, column2, column3, column4);
 
                             testTrans = new Matrix(matrix, transMatrix);
                         }
@@ -357,6 +370,7 @@ namespace MarkerBasedARExample
                             this.alpha = cylinderObject.testTrans.skalar;
                             this.rotationAxisVector = new Vector3(0.0f, 1.0f, 0.0f);
 
+                            //the textual representation
                             String[] matrix =
                             {
                                 "cos(" + this.alpha + ")", "    0    ", "sin(" + this.alpha + ")",
@@ -369,7 +383,7 @@ namespace MarkerBasedARExample
                             Vector4 column3 = new Vector4((float) -Math.Sin(this.alpha), 0f, (float) Math.Cos(this.alpha), 0f);
                             Vector4 column4 = new Vector4(0f, 0f, 0f, 1f);
 
-                            transMatrix = new Matrix4x4(column1, column2, column3, column4);
+                            Matrix4x4 transMatrix = new Matrix4x4(column1, column2, column3, column4);
 
                             testTrans = new Matrix(matrix, transMatrix);
                         }
@@ -381,6 +395,7 @@ namespace MarkerBasedARExample
                             //else set ? for the value
                             String alpha = "?";
 
+                            //the textual representation
                             String[] matrix =
                             {
                                 "cos(" + alpha + ")", "    0    ", "sin(" + alpha + ")",
@@ -393,7 +408,7 @@ namespace MarkerBasedARExample
                             Vector4 column3 = new Vector4(0f, 0f, 1f, 0f);
                             Vector4 column4 = new Vector4(0f, 0f, 0f, 1f);
 
-                            transMatrix = new Matrix4x4(column1, column2, column3, column4);
+                            Matrix4x4 transMatrix = new Matrix4x4(column1, column2, column3, column4);
 
                             testTrans = new Matrix(matrix, transMatrix);
                         }
@@ -409,6 +424,7 @@ namespace MarkerBasedARExample
                             this.alpha = cylinderObject.testTrans.skalar;
                             this.rotationAxisVector = new Vector3(0.0f, 0.0f, 1.0f);
 
+                            //the textual representation
                             String[] matrix =
                             {
                                 "cos(" + this.alpha + ")", "-sin(" + this.alpha + ")", "   0    ",
@@ -421,7 +437,7 @@ namespace MarkerBasedARExample
                             Vector4 column3 = new Vector4(0f, 0f, 1f, 0f);
                             Vector4 column4 = new Vector4(0f, 0f, 0f, 1f);
 
-                            transMatrix = new Matrix4x4(column1, column2, column3, column4);
+                            Matrix4x4 transMatrix = new Matrix4x4(column1, column2, column3, column4);
 
                             testTrans = new Matrix(matrix, transMatrix);
                         }
@@ -433,6 +449,7 @@ namespace MarkerBasedARExample
                             //else set ? for the value
                             String alpha = "?";
 
+                            //the textual representation
                             String[] matrix =
                             {
                                 "cos(" + alpha + ")", "-sin(" + alpha + ")", "   0    ",
@@ -445,7 +462,7 @@ namespace MarkerBasedARExample
                             Vector4 column3 = new Vector4(0f, 0f, 1f, 0f);
                             Vector4 column4 = new Vector4(0f, 0f, 0f, 1f);
 
-                            transMatrix = new Matrix4x4(column1, column2, column3, column4);
+                            Matrix4x4 transMatrix = new Matrix4x4(column1, column2, column3, column4);
 
                             testTrans = new Matrix(matrix, transMatrix);
                         }
@@ -475,7 +492,7 @@ namespace MarkerBasedARExample
                             Vector4 column3 = new Vector4(0f, 0f, 1f, 0f);
                             Vector4 column4 = new Vector4(0f, 0f, 0f, 1f);
 
-                            transMatrix = new Matrix4x4(column1, column2, column3, column4);
+                            Matrix4x4 transMatrix = new Matrix4x4(column1, column2, column3, column4);
 
                             testTrans = new Matrix(matrix, transMatrix);
                         }
@@ -496,7 +513,7 @@ namespace MarkerBasedARExample
                             Vector4 column3 = new Vector4(0f, 0f, 1f, 0f);
                             Vector4 column4 = new Vector4(0f, 0f, 0f, 1f);
 
-                            transMatrix = new Matrix4x4(column1, column2, column3, column4);
+                            Matrix4x4 transMatrix = new Matrix4x4(column1, column2, column3, column4);
 
                             testTrans = new Matrix(matrix, transMatrix);
                         }
@@ -526,7 +543,7 @@ namespace MarkerBasedARExample
                             Vector4 column3 = new Vector4(0f, 0f, 1f, 0f);
                             Vector4 column4 = new Vector4(0f, 0f, 0f, 1f);
 
-                            transMatrix = new Matrix4x4(column1, column2, column3, column4);
+                            Matrix4x4 transMatrix = new Matrix4x4(column1, column2, column3, column4);
 
                             testTrans = new Matrix(matrix, transMatrix);
                         }
@@ -547,7 +564,7 @@ namespace MarkerBasedARExample
                             Vector4 column3 = new Vector4(0f, 0f, 1f, 0f);
                             Vector4 column4 = new Vector4(0f, 0f, 0f, 1f);
 
-                            transMatrix = new Matrix4x4(column1, column2, column3, column4);
+                            Matrix4x4 transMatrix = new Matrix4x4(column1, column2, column3, column4);
 
                             testTrans = new Matrix(matrix, transMatrix);
                         }
@@ -565,6 +582,7 @@ namespace MarkerBasedARExample
                             
                             this.scaleVector = new Vector3(1.0f, 1.0f, alpha);
 
+                            //the textual representation
                             String[] matrix =
                             {
                                 "1", "0", "0",
@@ -577,7 +595,7 @@ namespace MarkerBasedARExample
                             Vector4 column3 = new Vector4(0f, 0f, alpha, 0f);
                             Vector4 column4 = new Vector4(0f, 0f, 0f, 1f);
 
-                            transMatrix = new Matrix4x4(column1, column2, column3, column4);
+                            Matrix4x4 transMatrix = new Matrix4x4(column1, column2, column3, column4);
 
                             testTrans = new Matrix(matrix, transMatrix);
                         }
@@ -598,7 +616,7 @@ namespace MarkerBasedARExample
                             Vector4 column3 = new Vector4(0f, 0f, 1f, 0f);
                             Vector4 column4 = new Vector4(0f, 0f, 0f, 1f);
 
-                            transMatrix = new Matrix4x4(column1, column2, column3, column4);
+                            Matrix4x4 transMatrix = new Matrix4x4(column1, column2, column3, column4);
 
                             testTrans = new Matrix(matrix, transMatrix);
                         }
