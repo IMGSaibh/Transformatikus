@@ -71,7 +71,8 @@ namespace MarkerBasedARExample
                     case IntMatrix.ElementTypes.Vector:
                     {
                         //get XYZ from cylinder
-                        if (cylinderObject.item.activeSelf &&
+                        if (cylinderObject &&
+                            cylinderObject.item.activeSelf &&
                             cylinderObject.type == CylinderTransformation.CylinderType.Cylinder_XYZ)
                         {
                             float alpha = cylinderObject.testTrans.skalar;
@@ -96,7 +97,8 @@ namespace MarkerBasedARExample
                     case IntMatrix.ElementTypes.Vector_X:
                     {
                         //get XYZ from cylinder
-                        if (cylinderObject.item.activeSelf &&
+                        if (cylinderObject &&
+                            cylinderObject.item.activeSelf &&
                             cylinderObject.type == CylinderTransformation.CylinderType.Cylinder_XYZ)
                         {
                             float alpha = cylinderObject.testTrans.skalar;
@@ -138,7 +140,8 @@ namespace MarkerBasedARExample
                     case IntMatrix.ElementTypes.Vector_Y:
                     {
                         //get XYZ from cylinder
-                        if (cylinderObject.item.activeSelf &&
+                        if (cylinderObject &&
+                            cylinderObject.item.activeSelf &&
                             cylinderObject.type == CylinderTransformation.CylinderType.Cylinder_XYZ)
                         {
                             float alpha = cylinderObject.testTrans.skalar;
@@ -180,7 +183,8 @@ namespace MarkerBasedARExample
                     case IntMatrix.ElementTypes.Vector_Z:
                     {
                         //get XYZ from cylinder
-                        if (cylinderObject.item.activeSelf &&
+                        if (cylinderObject &&
+                            cylinderObject.item.activeSelf &&
                             cylinderObject.type == CylinderTransformation.CylinderType.Cylinder_XYZ)
                         {
                             float alpha = cylinderObject.testTrans.skalar;
@@ -224,7 +228,8 @@ namespace MarkerBasedARExample
                         //TODO: transponierter Vektor realisieren
 
                         //get XYZ from cylinder
-                        if (cylinderObject.item.activeSelf &&
+                        if (cylinderObject &&
+                            cylinderObject.item.activeSelf &&
                             cylinderObject.type == CylinderTransformation.CylinderType.Cylinder_XYZ)
                         {
                             float alpha = cylinderObject.testTrans.skalar;
@@ -260,7 +265,8 @@ namespace MarkerBasedARExample
                         //TODO: transponierter Vektor realisieren --> brauchen wir eher nicht
 
                         //get XYZ from cylinder
-                        if (cylinderObject.item.activeSelf &&
+                        if (cylinderObject &&
+                            cylinderObject.item.activeSelf &&
                             cylinderObject.type == CylinderTransformation.CylinderType.Cylinder_XYZ)
                         {
                             float alpha = cylinderObject.testTrans.skalar;
@@ -309,7 +315,8 @@ namespace MarkerBasedARExample
                     case IntMatrix.ElementTypes.Rotation_X:
                     {
                         //get alpha from cylinder
-                        if (cylinderObject.item.activeSelf &&
+                        if (cylinderObject &&
+                            cylinderObject.item.activeSelf &&
                             cylinderObject.type == CylinderTransformation.CylinderType.Cylinder_Alpha)
                         {
                             this.alpha = cylinderObject.testTrans.skalar;
@@ -364,7 +371,8 @@ namespace MarkerBasedARExample
                     case IntMatrix.ElementTypes.Rotation_Y:
                     {
                         //get alpha from cylinder
-                        if (cylinderObject.item.activeSelf &&
+                        if (cylinderObject &&
+                            cylinderObject.item.activeSelf &&
                             cylinderObject.type == CylinderTransformation.CylinderType.Cylinder_Alpha)
                         {
                             this.alpha = cylinderObject.testTrans.skalar;
@@ -418,7 +426,8 @@ namespace MarkerBasedARExample
                     case IntMatrix.ElementTypes.Rotation_Z:
                     {
                         //get alpha from cylinder
-                        if (cylinderObject.item.activeSelf &&
+                        if (cylinderObject && 
+                            cylinderObject.item.activeSelf &&
                             cylinderObject.type == CylinderTransformation.CylinderType.Cylinder_Alpha)
                         {
                             this.alpha = cylinderObject.testTrans.skalar;
@@ -472,7 +481,8 @@ namespace MarkerBasedARExample
                     case IntMatrix.ElementTypes.Skalierung_X:
                     {
                         //get XYZ from cylinder
-                        if (cylinderObject.item.activeSelf
+                        if (cylinderObject &&
+                            cylinderObject.item.activeSelf
                             && cylinderObject.type == CylinderTransformation.CylinderType.Cylinder_XYZ)
                         {
                             float alpha = cylinderObject.testTrans.skalar;
@@ -523,7 +533,8 @@ namespace MarkerBasedARExample
                     case IntMatrix.ElementTypes.Skalierung_Y:
                     {
                         //get XYZ from cylinder
-                        if (cylinderObject.item.activeSelf &&
+                        if (cylinderObject &&
+                            cylinderObject.item.activeSelf &&
                             cylinderObject.type == CylinderTransformation.CylinderType.Cylinder_XYZ)
                         {
                             float alpha = cylinderObject.testTrans.skalar;
@@ -574,7 +585,8 @@ namespace MarkerBasedARExample
                     case IntMatrix.ElementTypes.Skalierung_Z:
                     {
                         //get XYZ from cylinder
-                        if (cylinderObject.item.activeSelf &&
+                        if (cylinderObject &&
+                            cylinderObject.item.activeSelf &&
                             cylinderObject.type == CylinderTransformation.CylinderType.Cylinder_XYZ)
                         {
                             float alpha = cylinderObject.testTrans.skalar;

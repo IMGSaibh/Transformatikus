@@ -27,6 +27,11 @@ namespace MarkerBasedARExample
         public GameObject teilpaket;
 
         /// <summary>
+        /// state machine of the teilpaket.
+        /// </summary>
+        public StateMachine stateMachine;
+        
+        /// <summary>
         /// Pseudo-Koordinatensytem Gameobject.
         /// </summary>
         public GameObject pseudoWorldCoordinateSystem;
@@ -506,13 +511,27 @@ namespace MarkerBasedARExample
                                 {
                                     //Plus-Translation durchführen
                                     //Vector3 translation = sortedCubes[2].Value.transformationClass.testTrans.vector;
-                                    teilpaket.transform.position += sortedCubes[1].Value.transformationClass.transVector;
+                                    //teilpaket.transform.position += sortedCubes[1].Value.transformationClass.transVector;
+                                    
+                                    //trigger state machine change
+                                    //do a translation
+                                    stateMachine.TranslationObject.Add(sortedCubes[1].Value.transformationClass.transVector);
+                                    
+                                    //change to wait state
+                                    stateMachine.ChangeState(new WaitState());
                                 }
                                 else if (sortedCubes[1].Value.transformationClass.transformationMatrix.operation == "-")
                                 {
                                     //Minus-Translation durchführen
                                     //Vector3 translation = sortedCubes[2].Value.transformationClass.testTrans.vector;
-                                    teilpaket.transform.position -= sortedCubes[1].Value.transformationClass.transVector;
+                                    //teilpaket.transform.position -= sortedCubes[1].Value.transformationClass.transVector;
+                                    
+                                    //trigger state machine change
+                                    //do a translation
+                                    stateMachine.TranslationObject.Sub(sortedCubes[1].Value.transformationClass.transVector);
+                                    
+                                    //change to wait state
+                                    stateMachine.ChangeState(new WaitState());
                                 }
                                 else
                                 {
@@ -545,14 +564,28 @@ namespace MarkerBasedARExample
                                 {
                                     //Plus-Translation durchführen
                                     //Vector3 translation = sortedCubes[0].Value.transformationClass.testTrans.vector;
-                                    teilpaket.transform.position += sortedCubes[0].Value.transformationClass.transVector;
+                                    //teilpaket.transform.position += sortedCubes[0].Value.transformationClass.transVector;
+                                    
+                                    //trigger state machine change
+                                    //do a translation
+                                    stateMachine.TranslationObject.Add(sortedCubes[0].Value.transformationClass.transVector);
+                                    
+                                    //change to wait state
+                                    stateMachine.ChangeState(new WaitState());
                                 }
                                 else if (sortedCubes[1].Value.transformationClass.transformationMatrix.operation == "-")
                                 {
                                     //Minus-Translation durchführen
                                     //TODO: erst ausführen, wenn Bestätigung und auch etwas in dem translations-vektor drin steht
                                     //Vector3 translation = sortedCubes[0].Value.transformationClass.testTrans.vector;
-                                    teilpaket.transform.position -= sortedCubes[0].Value.transformationClass.transVector;
+                                    //teilpaket.transform.position -= sortedCubes[0].Value.transformationClass.transVector;
+                                    
+                                    //trigger state machine change
+                                    //do a translation
+                                    stateMachine.TranslationObject.Sub(sortedCubes[0].Value.transformationClass.transVector);
+                                    
+                                    //change to wait state
+                                    stateMachine.ChangeState(new WaitState());
                                 }
                                 else
                                 {
@@ -587,7 +620,14 @@ namespace MarkerBasedARExample
 
                                     //Rotation ausführen
                                     //TODO: wenn die Bestätigungstaste gedrückt wurde + etwas ordentliches in alpha drin steht 
-                                    teilpaket.transform.RotateAround(pseudoWorldCoordinateSystem.transform.position, axis, alpha);
+                                    //teilpaket.transform.RotateAround(pseudoWorldCoordinateSystem.transform.position, axis, alpha);
+                                    
+                                    //trigger state machine change
+                                    //do a rotation
+                                    stateMachine.RotationObject.Rotate(axis, alpha);
+                                    
+                                    //change to wait state
+                                    stateMachine.ChangeState(new WaitState());
                                 }
                                 else
                                 {
@@ -619,8 +659,12 @@ namespace MarkerBasedARExample
                                     //Skalierungsvektor holen
                                     Vector3 scale = sortedCubes[0].Value.transformationClass.scaleVector;
                                     
-                                    //Operation ausführen
-                                    //Scale(scale);
+                                    //trigger state machine change
+                                    //do a scaling
+                                    stateMachine.ScalingObject.Scale(pseudoWorldCoordinateSystem.transform, scale);
+                                    
+                                    //change to wait state
+                                    stateMachine.ChangeState(new WaitState());
                                 }
                                 else
                                 {

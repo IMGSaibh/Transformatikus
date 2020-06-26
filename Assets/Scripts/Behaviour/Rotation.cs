@@ -6,6 +6,8 @@ public class Rotation : MonoBehaviour
 {
     private Vector3 axis;
     private float alpha;
+
+    public GameObject pseudoWorldCoordinateSystem;
     
     /// <summary>
     /// Physics Update.
@@ -24,7 +26,7 @@ public class Rotation : MonoBehaviour
         this.axis = axis;
         this.alpha = alpha;
         
-        //transform.RotateAround(pseudoWorldCoordinateSystem.transform.position, this.axis, this.alpha);
+        transform.RotateAround(pseudoWorldCoordinateSystem.transform.position, this.axis, this.alpha);
     }
 
 }

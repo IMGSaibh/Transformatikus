@@ -32,6 +32,24 @@ public class Translation : MonoBehaviour
     {
         this.input = input;
     }
+    
+    /// <summary>
+    /// Passing vector to be added to the paket.
+    /// </summary>
+    /// <param name="input">Input - vector3.</param>
+    public void Add(Vector3 input)
+    {
+        transform.position += input;
+    }
+    
+    /// <summary>
+    /// Passing vector to be substract to the paket.
+    /// </summary>
+    /// <param name="input">Input - vector3.</param>
+    public void Sub(Vector3 input)
+    {
+        transform.position -= input;
+    }
 
 
 }

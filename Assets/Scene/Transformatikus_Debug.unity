@@ -523,6 +523,11 @@ PrefabInstance:
       propertyPath: pseudoWorldCoordinateSystem
       value: 
       objectReference: {fileID: 981184777}
+    - target: {fileID: 334942186603069240, guid: b5cef862891fd49dd839275e0febf620,
+        type: 3}
+      propertyPath: stateMachine
+      value: 
+      objectReference: {fileID: 2141585993}
     - target: {fileID: 334942186603069244, guid: b5cef862891fd49dd839275e0febf620,
         type: 3}
       propertyPath: m_Enabled
@@ -631,18 +636,6 @@ Camera:
     type: 3}
   m_PrefabInstance: {fileID: 1519998429}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &313018017 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8815562149604300258, guid: 2f855cbd20acc483897b3221e92a97b5,
-    type: 3}
-  m_PrefabInstance: {fileID: 1034324137}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1abf1d17f92c438f821b0f85992bef7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &402609130
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1049,7 +1042,7 @@ PrefabInstance:
         type: 3}
       propertyPath: cylinderObject
       value: 
-      objectReference: {fileID: 313018017}
+      objectReference: {fileID: 1241474028}
     - target: {fileID: 3905597047000772569, guid: 701a478739c3c4fc592fef6444b84887,
         type: 3}
       propertyPath: m_Name
@@ -1114,7 +1107,7 @@ PrefabInstance:
         type: 3}
       propertyPath: cylinderObject
       value: 
-      objectReference: {fileID: 313018017}
+      objectReference: {fileID: 1241474028}
     - target: {fileID: 3905597047401279217, guid: 701a478739c3c4fc592fef6444b84887,
         type: 3}
       propertyPath: cylinderObject
@@ -1124,7 +1117,7 @@ PrefabInstance:
         type: 3}
       propertyPath: cylinderObject
       value: 
-      objectReference: {fileID: 313018017}
+      objectReference: {fileID: 1241474028}
     - target: {fileID: 3905597047613141223, guid: 701a478739c3c4fc592fef6444b84887,
         type: 3}
       propertyPath: cylinderObject
@@ -1216,6 +1209,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1241474028 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8815562149604300258, guid: 2f855cbd20acc483897b3221e92a97b5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1034324137}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1abf1d17f92c438f821b0f85992bef7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1247031981 stripped
@@ -1847,6 +1852,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   translationObject: {fileID: 2141585994}
+  rotationObject: {fileID: 2141585996}
+  scalingObject: {fileID: 2141585995}
+  sceneSwitch: {fileID: 0}
 --- !u!114 &2141585994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1860,3 +1868,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
+--- !u!114 &2141585995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2141585991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b22a1f24327a4492196f4dfe339abd3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2141585996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2141585991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 786b91404d3884ba79f8c8f72f992a22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pseudoWorldCoordinateSystem: {fileID: 981184777}
