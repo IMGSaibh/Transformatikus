@@ -160,7 +160,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 76868215}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6c05f77045122e544a59f39b5abfe788, type: 3}
   m_Name: 
@@ -242,6 +242,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2338979111439995980, guid: db0837d6d6d734ed6921ef21514ca736,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2338979111439995981, guid: db0837d6d6d734ed6921ef21514ca736,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -275,37 +280,42 @@ PrefabInstance:
     - target: {fileID: 2338979111540326291, guid: db0837d6d6d734ed6921ef21514ca736,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2338979111562955005, guid: db0837d6d6d734ed6921ef21514ca736,
+        type: 3}
+      propertyPath: m_Text
+      value: "Best\xE4tigen"
       objectReference: {fileID: 0}
     - target: {fileID: 2338979112607202169, guid: db0837d6d6d734ed6921ef21514ca736,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2338979112607202169, guid: db0837d6d6d734ed6921ef21514ca736,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2338979112607202169, guid: db0837d6d6d734ed6921ef21514ca736,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 90
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2338979112607202169, guid: db0837d6d6d734ed6921ef21514ca736,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -30
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2338979112607202169, guid: db0837d6d6d734ed6921ef21514ca736,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 160
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2338979112607202169, guid: db0837d6d6d734ed6921ef21514ca736,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 40
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2338979113190168080, guid: db0837d6d6d734ed6921ef21514ca736,
         type: 3}
@@ -912,6 +922,11 @@ PrefabInstance:
     - target: {fileID: 334942186603069218, guid: b5cef862891fd49dd839275e0febf620,
         type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 334942186603069219, guid: b5cef862891fd49dd839275e0febf620,
+        type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 334942186603069240, guid: b5cef862891fd49dd839275e0febf620,
@@ -974,6 +989,21 @@ PrefabInstance:
       propertyPath: thirdMatrixText
       value: 
       objectReference: {fileID: 2032953750}
+    - target: {fileID: 334942186603069240, guid: b5cef862891fd49dd839275e0febf620,
+        type: 3}
+      propertyPath: teilpaket
+      value: 
+      objectReference: {fileID: 76868215}
+    - target: {fileID: 334942186603069240, guid: b5cef862891fd49dd839275e0febf620,
+        type: 3}
+      propertyPath: pseudoWorldCoordinateSystem
+      value: 
+      objectReference: {fileID: 1761819568}
+    - target: {fileID: 334942186603069244, guid: b5cef862891fd49dd839275e0febf620,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 334942186603069246, guid: b5cef862891fd49dd839275e0febf620,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -22,6 +22,16 @@ namespace MarkerBasedARExample
     public class WebCamTextureMarkerBasedARExample : MonoBehaviour
     {
         /// <summary>
+        /// Teilpaket Gameobject.
+        /// </summary>
+        public GameObject teilpaket;
+
+        /// <summary>
+        /// Pseudo-Koordinatensytem Gameobject.
+        /// </summary>
+        public GameObject pseudoWorldCoordinateSystem;
+        
+        /// <summary>
         /// The AR camera.
         /// </summary>
         public Camera ARCamera;
@@ -460,9 +470,9 @@ namespace MarkerBasedARExample
                 //wenn genau drei Würfel gelegt wurden (ausgeschlossen ist der Zylinder)
                 if (sortedCubes != null && sortedCubes.Count == 3)
                 {
-                    Debug.Log("sortedCubes[0]: " + sortedCubes[0].Value.transformationClass.transformationMatrix.operation);
-                    Debug.Log("sortedCubes[1]: " + sortedCubes[1].Value.transformationClass.transformationMatrix.operation);
-                    Debug.Log("sortedCubes[2]: " + sortedCubes[2].Value.transformationClass.transformationMatrix.operation);
+                    //Debug.Log("sortedCubes[0]: " + sortedCubes[0].Value.transformationClass.transformationMatrix.operation);
+                    //Debug.Log("sortedCubes[1]: " + sortedCubes[1].Value.transformationClass.transformationMatrix.operation);
+                    //Debug.Log("sortedCubes[2]: " + sortedCubes[2].Value.transformationClass.transformationMatrix.operation);
 
                     //wenn der mittlere Würfel ein Operationswürfel ist
                     //der mittlere Würfel MUSS immer eine Operation sein
@@ -496,11 +506,13 @@ namespace MarkerBasedARExample
                                 {
                                     //Plus-Translation durchführen
                                     //Vector3 translation = sortedCubes[2].Value.transformationClass.testTrans.vector;
+                                    teilpaket.transform.position += sortedCubes[1].Value.transformationClass.transVector;
                                 }
                                 else if (sortedCubes[1].Value.transformationClass.transformationMatrix.operation == "-")
                                 {
                                     //Minus-Translation durchführen
                                     //Vector3 translation = sortedCubes[2].Value.transformationClass.testTrans.vector;
+                                    teilpaket.transform.position -= sortedCubes[1].Value.transformationClass.transVector;
                                 }
                                 else
                                 {
@@ -533,11 +545,14 @@ namespace MarkerBasedARExample
                                 {
                                     //Plus-Translation durchführen
                                     //Vector3 translation = sortedCubes[0].Value.transformationClass.testTrans.vector;
+                                    teilpaket.transform.position += sortedCubes[0].Value.transformationClass.transVector;
                                 }
                                 else if (sortedCubes[1].Value.transformationClass.transformationMatrix.operation == "-")
                                 {
                                     //Minus-Translation durchführen
+                                    //TODO: erst ausführen, wenn Bestätigung und auch etwas in dem translations-vektor drin steht
                                     //Vector3 translation = sortedCubes[0].Value.transformationClass.testTrans.vector;
+                                    teilpaket.transform.position -= sortedCubes[0].Value.transformationClass.transVector;
                                 }
                                 else
                                 {
@@ -569,10 +584,10 @@ namespace MarkerBasedARExample
                                     //alpha und die Rotationsachse holen
                                     float alpha = sortedCubes[0].Value.transformationClass.alpha;
                                     Vector3 axis = sortedCubes[0].Value.transformationClass.rotationAxisVector;
-                                    //Matrix4x4 rotation = sortedCubes[0].Value.transformationClass.testTrans.matrix;
 
                                     //Rotation ausführen
-                                    //Rotation(alpha, axis);
+                                    //TODO: wenn die Bestätigungstaste gedrückt wurde + etwas ordentliches in alpha drin steht 
+                                    teilpaket.transform.RotateAround(pseudoWorldCoordinateSystem.transform.position, axis, alpha);
                                 }
                                 else
                                 {
