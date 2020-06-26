@@ -21,6 +21,7 @@ namespace MarkerBasedARExample
 
         public Transformation testTrans;
 
+        //für den Zylinder
         public CylinderTransformation cylinderObject;
 
         // Start is called before the first frame update

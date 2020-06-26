@@ -264,7 +264,7 @@ namespace MarkerBasedARExample
 
 
             //if WebCamera is frontFaceing,flip Mat.
-            webCamTextureToMatHelper.flipHorizontal = webCamTextureToMatHelper.GetWebCamDevice ().isFrontFacing;
+            webCamTextureToMatHelper.flipHorizontal = webCamTextureToMatHelper.GetWebCamDevice().isFrontFacing;
         }
 
         /// <summary>
@@ -455,51 +455,171 @@ namespace MarkerBasedARExample
                     thirdMatrixText.text = "";
                 }
 
-                if (sortedCubes != null && sortedCubes.Count >= 3)
+                //TODO: hier werden die Operationen aufgerufen
+                
+                //wenn genau drei Würfel gelegt wurden (ausgeschlossen ist der Zylinder)
+                if (sortedCubes != null && sortedCubes.Count == 3)
                 {
-                    if (sortedCubes[0].Value.transformationClass.transformationMatrix.elementType ==
+                    Debug.Log("sortedCubes[0]: " + sortedCubes[0].Value.transformationClass.transformationMatrix.operation);
+                    Debug.Log("sortedCubes[1]: " + sortedCubes[1].Value.transformationClass.transformationMatrix.operation);
+                    Debug.Log("sortedCubes[2]: " + sortedCubes[2].Value.transformationClass.transformationMatrix.operation);
+
+                    //wenn der mittlere Würfel ein Operationswürfel ist
+                    //der mittlere Würfel MUSS immer eine Operation sein
+                    if (sortedCubes[1].Value.transformationClass.transformationMatrix.elementType ==
                         IntMatrix.ElementTypes.Operation)
+                    {
+                        //Quatsch-Operationen (Finten) abfragen
+                        if (sortedCubes[1].Value.transformationClass.transformationMatrix.operation == "/"
+                            || sortedCubes[1].Value.transformationClass.transformationMatrix.operation == "%"
+                            || sortedCubes[1].Value.transformationClass.transformationMatrix.operation == "&")
+                        {
+                            Debug.Log("Fehler!");
+                        }
+
+                        //wenn der erste Würfel ein Objekt oder Pivot ist
+                        if (sortedCubes[0].Value.transformationClass.transformationMatrix.elementType ==
+                            IntMatrix.ElementTypes.Objekt
+                            || sortedCubes[0].Value.transformationClass.transformationMatrix.elementType ==
+                            IntMatrix.ElementTypes.Pivot)
+                        {
+                            //dann muss der dritte Würfel ein Translations-Würfel sein
+                            if (sortedCubes[2].Value.transformationClass.transformationMatrix.elementType ==
+                                IntMatrix.ElementTypes.Vector_X
+                                || sortedCubes[2].Value.transformationClass.transformationMatrix.elementType ==
+                                IntMatrix.ElementTypes.Vector_Y
+                                || sortedCubes[2].Value.transformationClass.transformationMatrix.elementType ==
+                                IntMatrix.ElementTypes.Vector_Z
+                                )
+                            {
+                                if (sortedCubes[1].Value.transformationClass.transformationMatrix.operation == "+")
+                                {
+                                    //Plus-Translation durchführen
+                                    //Vector3 translation = sortedCubes[2].Value.transformationClass.testTrans.vector;
+                                }
+                                else if (sortedCubes[1].Value.transformationClass.transformationMatrix.operation == "-")
+                                {
+                                    //Minus-Translation durchführen
+                                    //Vector3 translation = sortedCubes[2].Value.transformationClass.testTrans.vector;
+                                }
+                                else
+                                {
+                                    //*-Operation macht keinen Sinn!
+                                    Debug.Log("Fehler!");
+                                }
+                            }
+                            //ansonsten Fehler!
+                            else
+                            {
+                                Debug.Log("Fehler!");
+                            }
+                        }
+                        //wenn der erste Würfel ein Translations-Würfel ist
+                        else if (sortedCubes[0].Value.transformationClass.transformationMatrix.elementType ==
+                                 IntMatrix.ElementTypes.Vector_X
+                                 || sortedCubes[0].Value.transformationClass.transformationMatrix.elementType ==
+                                 IntMatrix.ElementTypes.Vector_Y
+                                 || sortedCubes[0].Value.transformationClass.transformationMatrix.elementType ==
+                                 IntMatrix.ElementTypes.Vector_Z
+                        )
+                        {
+                            //dann MUSS der dritte Würfel ein Objekt/Pivot sein
+                            if (sortedCubes[2].Value.transformationClass.transformationMatrix.elementType ==
+                                IntMatrix.ElementTypes.Objekt
+                                || sortedCubes[2].Value.transformationClass.transformationMatrix.elementType ==
+                                IntMatrix.ElementTypes.Pivot)
+                            {
+                                if (sortedCubes[1].Value.transformationClass.transformationMatrix.operation == "+")
+                                {
+                                    //Plus-Translation durchführen
+                                    //Vector3 translation = sortedCubes[0].Value.transformationClass.testTrans.vector;
+                                }
+                                else if (sortedCubes[1].Value.transformationClass.transformationMatrix.operation == "-")
+                                {
+                                    //Minus-Translation durchführen
+                                    //Vector3 translation = sortedCubes[0].Value.transformationClass.testTrans.vector;
+                                }
+                                else
+                                {
+                                    //*-Operation macht keinen Sinn!
+                                    Debug.Log("Fehler!");
+                                }
+                            }
+                            else
+                            {
+                                Debug.Log("Fehler");
+                            }
+                        }
+                        //wenn der erste Würfel eine Rotations-Matrix ist
+                        else if (sortedCubes[0].Value.transformationClass.transformationMatrix.elementType ==
+                            IntMatrix.ElementTypes.Rotation_X
+                            || sortedCubes[0].Value.transformationClass.transformationMatrix.elementType ==
+                            IntMatrix.ElementTypes.Rotation_Y
+                            || sortedCubes[0].Value.transformationClass.transformationMatrix.elementType ==
+                            IntMatrix.ElementTypes.Rotation_Z)
+                        {
+                            //dann MUSS der dritte Würfel ein Objekt/Pivot sein
+                            if (sortedCubes[2].Value.transformationClass.transformationMatrix.elementType ==
+                                IntMatrix.ElementTypes.Objekt
+                                || sortedCubes[2].Value.transformationClass.transformationMatrix.elementType ==
+                                IntMatrix.ElementTypes.Pivot)
+                            {
+                                if (sortedCubes[1].Value.transformationClass.transformationMatrix.operation == "*")
+                                {
+                                    //Operation ausführen
+                                    //Matrix4x4 rotation = sortedCubes[0].Value.transformationClass.testTrans.matrix;
+                                }
+                                else
+                                {
+                                    //+ und - Operation macht keinen Sinn!
+                                    Debug.Log("Fehler!");
+                                }
+                            }
+                            else
+                            {
+                                Debug.Log("Fehler");
+                            }
+                        }
+                        //wenn der erste Würfel eine Skalierungs-Matrix ist
+                        else if (sortedCubes[0].Value.transformationClass.transformationMatrix.elementType ==
+                                 IntMatrix.ElementTypes.Skalierung_X
+                                 || sortedCubes[0].Value.transformationClass.transformationMatrix.elementType ==
+                                 IntMatrix.ElementTypes.Skalierung_Y
+                                 || sortedCubes[0].Value.transformationClass.transformationMatrix.elementType ==
+                                 IntMatrix.ElementTypes.Skalierung_Z)
+                        {
+                            //dann MUSS der dritte Würfel ein Objekt/Pivot sein
+                            if (sortedCubes[2].Value.transformationClass.transformationMatrix.elementType ==
+                                IntMatrix.ElementTypes.Objekt
+                                || sortedCubes[2].Value.transformationClass.transformationMatrix.elementType ==
+                                IntMatrix.ElementTypes.Pivot)
+                            {
+                                if (sortedCubes[1].Value.transformationClass.transformationMatrix.operation == "*")
+                                {
+                                    //Operation ausführen
+                                    //Matrix4x4 scale = sortedCubes[0].Value.transformationClass.testTrans.matrix;
+                                }
+                                else
+                                {
+                                    //+ und - Operation macht keinen Sinn!
+                                    Debug.Log("Fehler!");
+                                }
+                            }
+                            else
+                            {
+                                Debug.Log("Fehler");
+                            }
+                        }
+                        //TODO: Transponierte Vektoren * Matrix sind möglich, aber noch nicht reingenommen!
+                    }
+                    else
                     {
                         Debug.Log("Fehler!");
                     }
-                    else if (sortedCubes[0].Value.transformationClass.transformationMatrix.elementType ==
-                        IntMatrix.ElementTypes.Objekt
-                        || sortedCubes[0].Value.transformationClass.transformationMatrix.elementType ==
-                        IntMatrix.ElementTypes.Pivot)
-                    {
-                        if (sortedCubes[2].Value.transformationClass.transformationMatrix.elementType !=
-                            IntMatrix.ElementTypes.Vector_X
-                            || sortedCubes[2].Value.transformationClass.transformationMatrix.elementType !=
-                            IntMatrix.ElementTypes.Vector_Y
-                            || sortedCubes[2].Value.transformationClass.transformationMatrix.elementType !=
-                            IntMatrix.ElementTypes.Vector_Z
-                        )
-                        {
-                            Debug.Log("Fehler!");
-                        }
-                    }
-                    else if (sortedCubes[0].Value.transformationClass.transformationMatrix.elementType ==
-                             IntMatrix.ElementTypes.Rotation_X
-                             || sortedCubes[0].Value.transformationClass.transformationMatrix.elementType ==
-                             IntMatrix.ElementTypes.Rotation_Y
-                             || sortedCubes[0].Value.transformationClass.transformationMatrix.elementType ==
-                             IntMatrix.ElementTypes.Rotation_Z
-                             || sortedCubes[0].Value.transformationClass.transformationMatrix.elementType ==
-                             IntMatrix.ElementTypes.Skalierung_X
-                             || sortedCubes[0].Value.transformationClass.transformationMatrix.elementType ==
-                             IntMatrix.ElementTypes.Skalierung_Y
-                             || sortedCubes[0].Value.transformationClass.transformationMatrix.elementType ==
-                             IntMatrix.ElementTypes.Skalierung_Z)
-                    {
-                        if (sortedCubes[2].Value.transformationClass.transformationMatrix.elementType !=
-                            IntMatrix.ElementTypes.Pivot
-                            || sortedCubes[2].Value.transformationClass.transformationMatrix.elementType !=
-                            IntMatrix.ElementTypes.Objekt
-                        )
-                        {
-                            Debug.Log("Fehler!");
-                        }
-                    }
+                }
+                else
+                {
+                    Debug.Log("Nicht genau 3 Würfel gelegt!");
                 }
             }
         }
