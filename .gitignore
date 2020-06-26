@@ -60,3 +60,6 @@ sysinfo.txt
 
 # Crashlytics generated file
 crashlytics-build.properties
+
+# Jetbrains Rider IDE files
+/.idea/
