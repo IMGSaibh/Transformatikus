@@ -29,16 +29,22 @@ public class test : MonoBehaviour
         
         //ROTATION AROUND POINT
         //ROTATION BEKOMMT ER ALS ROTATIONS ACHSE UND ALPHA VON DEN WÜRFELN
-        this.transform.RotateAround(pseudoWorldCoordinateSystem.transform.position, rotationAxis, alpha);
-        
+        //this.transform.RotateAround(pseudoWorldCoordinateSystem.transform.position, rotationAxis, alpha);
+
+        //this.transform.RotateAround(pseudoWorldCoordinateSystem.transform.position, rotationAxis, alpha);
+
+        transform.RotateAround(pseudoWorldCoordinateSystem.transform.position, Vector3.left, 90);
+
         //SCALE AT POINT
         //SKALIERUNG BEKOMMT ER ALS VECTOR
         //ScaleAround(this.gameObject, new Vector3(-12.0f,0,0), new Vector3(2.0f, 1.0f, 1.0f));
-        ScaleAround(this.gameObject, pseudoWorldCoordinateSystem.transform.position, new Vector3(1.0f, 2.0f, 1.0f));
+
+        //ScaleAround(this.gameObject, pseudoWorldCoordinateSystem.transform.position, new Vector3(3.0f, 1.0f, 1.0f));
+
         //this.transform.position.Scale(new Vector3(2.0f, 1.0f, 1.0f));
-        
+        //scaleObject(pseudoWorldCoordinateSystem.transform, 3f, 1f, 1f);
         //this.transform.RotateAround(pseudoWorldCoordinateSystem.transform.position, rotationAxis, -alpha);
-        
+
     }
 
     private void ConvertToGivenPlane()
@@ -75,6 +81,16 @@ public class test : MonoBehaviour
         target.transform.localPosition = FP;
     }
 
+    void scaleObject(Transform koordsystem,float scaleX, float scaleY, float scaleZ) 
+    {
+        transform.SetParent(koordsystem);
+        Vector3 scale = koordsystem.localScale;
+        scale.x = scaleX;
+        scale.y = scaleY;
+        scale.z = scaleZ;
+
+        koordsystem.localScale = scale; 
+    }
 
 
     // Update is called once per frame
