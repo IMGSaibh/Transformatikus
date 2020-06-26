@@ -60,16 +60,20 @@ namespace MarkerBasedARExample
                 {
                     case IntMatrix.ElementTypes.Objekt:
                     {
-                        //testTrans = new Objekt();
+                        testTrans = new Objekt();
+                        
                         break;
                     }
                     case IntMatrix.ElementTypes.Pivot:
                     {
-                        //testTrans = new Pivot();
+                        testTrans = new Pivot();
+                        
                         break;
                     }
                     case IntMatrix.ElementTypes.Vector:
                     {
+                        //dieser typ wird eigentlich nicht mehr gebraucht & kann bald weg
+                        
                         //get XYZ from cylinder
                         if (cylinderObject &&
                             cylinderObject.item.activeSelf &&
@@ -299,6 +303,7 @@ namespace MarkerBasedARExample
                     }
                     case IntMatrix.ElementTypes.Matrix:
                     {
+                        //auch diesen typ brauchen wir nicht mehr
                         break;
                     }
                     case IntMatrix.ElementTypes.Operation:

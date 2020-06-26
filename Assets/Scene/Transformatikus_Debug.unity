@@ -528,6 +528,11 @@ PrefabInstance:
       propertyPath: stateMachine
       value: 
       objectReference: {fileID: 2141585993}
+    - target: {fileID: 334942186603069240, guid: b5cef862891fd49dd839275e0febf620,
+        type: 3}
+      propertyPath: button
+      value: 
+      objectReference: {fileID: 320547491}
     - target: {fileID: 334942186603069244, guid: b5cef862891fd49dd839275e0febf620,
         type: 3}
       propertyPath: m_Enabled
@@ -636,6 +641,18 @@ Camera:
     type: 3}
   m_PrefabInstance: {fileID: 1519998429}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &320547491 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2338979112607202174, guid: db0837d6d6d734ed6921ef21514ca736,
+    type: 3}
+  m_PrefabInstance: {fileID: 34895724}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &402609130
 PrefabInstance:
   m_ObjectHideFlags: 0
