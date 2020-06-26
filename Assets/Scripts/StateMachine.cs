@@ -10,7 +10,9 @@ public class StateMachine : MonoBehaviour
     private Translation translationObject;
     public Translation TranslationObject => translationObject;
 
-
+    [SerializeField]
+    private SceneSwitch sceneSwitch;
+    public SceneSwitch SceneSwitch => sceneSwitch;
 
 
     private void Start() 

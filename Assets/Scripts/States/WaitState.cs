@@ -20,5 +20,7 @@ public class WaitState : BaseState
         //When cube is placed on table do somthing
         if (Input.GetKeyDown(KeyCode.M))
             stateMachineOwner.ChangeState(new MoveState());
+        if (Input.GetKeyDown(KeyCode.S))
+            stateMachineOwner.ChangeState(new LoadingSceneState());
     }
 }

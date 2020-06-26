@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scene/idle.unity
+    guid: a7f017335616d8e4bac793f1f991a5a4
+  - enabled: 1
+    path: Assets/Scene/Transformatikus.unity
+    guid: aad936cfc78ab2f49a0cf62315d4e20d
   m_configObjects: {}
