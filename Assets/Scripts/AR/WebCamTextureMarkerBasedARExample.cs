@@ -566,8 +566,13 @@ namespace MarkerBasedARExample
                             {
                                 if (sortedCubes[1].Value.transformationClass.transformationMatrix.operation == "*")
                                 {
-                                    //Operation ausführen
+                                    //alpha und die Rotationsachse holen
+                                    float alpha = sortedCubes[0].Value.transformationClass.alpha;
+                                    Vector3 axis = sortedCubes[0].Value.transformationClass.rotationAxisVector;
                                     //Matrix4x4 rotation = sortedCubes[0].Value.transformationClass.testTrans.matrix;
+
+                                    //Rotation ausführen
+                                    //Rotation(alpha, axis);
                                 }
                                 else
                                 {
@@ -596,8 +601,11 @@ namespace MarkerBasedARExample
                             {
                                 if (sortedCubes[1].Value.transformationClass.transformationMatrix.operation == "*")
                                 {
+                                    //Skalierungsvektor holen
+                                    Vector3 scale = sortedCubes[0].Value.transformationClass.scaleVector;
+                                    
                                     //Operation ausführen
-                                    //Matrix4x4 scale = sortedCubes[0].Value.transformationClass.testTrans.matrix;
+                                    //Scale(scale);
                                 }
                                 else
                                 {

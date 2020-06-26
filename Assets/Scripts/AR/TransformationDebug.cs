@@ -16,8 +16,13 @@ namespace MarkerBasedARExample
 
         private Matrix4x4 transMatrix;
 
-        //TODO: vielleicht noch den Vector füllen
-        private Vector3 transVector;
+        public Vector3 transVector;
+
+        public Vector3 scaleVector;
+        
+        public Vector3 rotationAxisVector;
+
+        public float alpha;
 
         public Transformation testTrans;
 
@@ -65,7 +70,10 @@ namespace MarkerBasedARExample
                                 "    0    ",
                             };
 
+                            //Vector3 translationVector = new Vector3(alpha, 0f, 0f);
                             Vector3 translationVector = new Vector3(alpha, 0f, 0f);
+                            
+                            this.transVector = new Vector3(alpha, 0f, 0f);
 
                             //vectorTransformation = new VectorTransformation(vector, translationVector);
 
@@ -90,6 +98,8 @@ namespace MarkerBasedARExample
                             };
 
                             Vector3 translationVector = new Vector3(alpha, 0f, 0f);
+                            
+                            this.transVector = new Vector3(alpha, 0f, 0f);
 
                             testTrans = new Vector(vector, translationVector);
                         }
@@ -106,6 +116,8 @@ namespace MarkerBasedARExample
                             };
 
                             Vector3 translationVector = new Vector3(0f, 0f, 0f);
+                            
+                            this.transVector = new Vector3(0f, 0f, 0f);
 
                             testTrans = new Vector(vector, translationVector);
                         }
@@ -128,7 +140,9 @@ namespace MarkerBasedARExample
                             };
 
                             Vector3 translationVector = new Vector3(0f, alpha, 0f);
-
+                            
+                            this.transVector = new Vector3(0f, alpha, 0f);
+                            
                             testTrans = new Vector(vector, translationVector);
                         }
                         else
@@ -144,6 +158,8 @@ namespace MarkerBasedARExample
                             };
 
                             Vector3 translationVector = new Vector3(0f, 0f, 0f);
+                            
+                            this.transVector = new Vector3(0f, 0f, 0f);
 
                             testTrans = new Vector(vector, translationVector);
                         }
@@ -166,6 +182,8 @@ namespace MarkerBasedARExample
                             };
 
                             Vector3 translationVector = new Vector3(0f, 0f, alpha);
+                            
+                            this.transVector = new Vector3(0f, 0f, alpha);
 
                             testTrans = new Vector(vector, translationVector);
                         }
@@ -182,6 +200,8 @@ namespace MarkerBasedARExample
                             };
 
                             Vector3 translationVector = new Vector3(0f, 0f, 0f);
+                            
+                            this.transVector = new Vector3(0f, 0f, 0f);
 
                             testTrans = new Vector(vector, translationVector);
                         }
@@ -281,19 +301,20 @@ namespace MarkerBasedARExample
                         if (cylinderObject.item.activeSelf &&
                             cylinderObject.type == CylinderTransformation.CylinderType.Cylinder_Alpha)
                         {
-                            float alpha = cylinderObject.testTrans.skalar;
+                            this.alpha = cylinderObject.testTrans.skalar;
+                            this.rotationAxisVector = new Vector3(1.0f, 0.0f, 0.0f);
 
                             String[] matrix =
                             {
                                 "    1    ", "    0    ", "    0    ",
-                                "    0    ", "cos(" + alpha + ")", "-sin(" + alpha + ")",
-                                "    0    ", "sin(" + alpha + ")", "cos(" + alpha + ")"
+                                "    0    ", "cos(" + this.alpha + ")", "-sin(" + this.alpha + ")",
+                                "    0    ", "sin(" + this.alpha + ")", "cos(" + this.alpha + ")"
                             };
 
                             //create object that holds textual matrix and the rel matrix
                             Vector4 column1 = new Vector4(1f, 0f, 0f, 0f);
-                            Vector4 column2 = new Vector4(0f, (float) Math.Cos(alpha), (float) -Math.Sin(alpha), 0f);
-                            Vector4 column3 = new Vector4(0f, (float) Math.Sin(alpha), (float) Math.Cos(alpha), 0f);
+                            Vector4 column2 = new Vector4(0f, (float) Math.Cos(this.alpha), (float) -Math.Sin(this.alpha), 0f);
+                            Vector4 column3 = new Vector4(0f, (float) Math.Sin(this.alpha), (float) Math.Cos(this.alpha), 0f);
                             Vector4 column4 = new Vector4(0f, 0f, 0f, 1f);
 
                             transMatrix = new Matrix4x4(column1, column2, column3, column4);
@@ -302,9 +323,12 @@ namespace MarkerBasedARExample
                         }
                         else
                         {
+                            this.alpha = 0.0f;
+                            this.rotationAxisVector = new Vector3(1.0f, 0.0f, 0.0f);
+
                             //else set ? for the value
                             String alpha = "?";
-
+                            
                             String[] matrix =
                             {
                                 "    1    ", "    0    ", "    0    ",
@@ -330,18 +354,19 @@ namespace MarkerBasedARExample
                         if (cylinderObject.item.activeSelf &&
                             cylinderObject.type == CylinderTransformation.CylinderType.Cylinder_Alpha)
                         {
-                            float alpha = cylinderObject.testTrans.skalar;
+                            this.alpha = cylinderObject.testTrans.skalar;
+                            this.rotationAxisVector = new Vector3(0.0f, 1.0f, 0.0f);
 
                             String[] matrix =
                             {
-                                "cos(" + alpha + ")", "    0    ", "sin(" + alpha + ")",
+                                "cos(" + this.alpha + ")", "    0    ", "sin(" + this.alpha + ")",
                                 "    0    ", "    1    ", "    0    ",
-                                "-sin(" + alpha + ")", "     0    ", "cos(" + alpha + ")"
+                                "-sin(" + this.alpha + ")", "     0    ", "cos(" + this.alpha + ")"
                             };
 
-                            Vector4 column1 = new Vector4((float) Math.Cos(alpha), 0f, (float) Math.Sin(alpha), 0f);
+                            Vector4 column1 = new Vector4((float) Math.Cos(this.alpha), 0f, (float) Math.Sin(this.alpha), 0f);
                             Vector4 column2 = new Vector4(0f, 1f, 0f, 0f);
-                            Vector4 column3 = new Vector4((float) -Math.Sin(alpha), 0f, (float) Math.Cos(alpha), 0f);
+                            Vector4 column3 = new Vector4((float) -Math.Sin(this.alpha), 0f, (float) Math.Cos(this.alpha), 0f);
                             Vector4 column4 = new Vector4(0f, 0f, 0f, 1f);
 
                             transMatrix = new Matrix4x4(column1, column2, column3, column4);
@@ -350,6 +375,9 @@ namespace MarkerBasedARExample
                         }
                         else
                         {
+                            this.alpha = 0.0f;
+                            this.rotationAxisVector = new Vector3(0.0f, 1.0f, 0.0f);
+
                             //else set ? for the value
                             String alpha = "?";
 
@@ -378,17 +406,18 @@ namespace MarkerBasedARExample
                         if (cylinderObject.item.activeSelf &&
                             cylinderObject.type == CylinderTransformation.CylinderType.Cylinder_Alpha)
                         {
-                            float alpha = cylinderObject.testTrans.skalar;
+                            this.alpha = cylinderObject.testTrans.skalar;
+                            this.rotationAxisVector = new Vector3(0.0f, 0.0f, 1.0f);
 
                             String[] matrix =
                             {
-                                "cos(" + alpha + ")", "-sin(" + alpha + ")", "   0    ",
-                                "sin(" + alpha + ")", "cos(" + alpha + ")", "    0    ",
+                                "cos(" + this.alpha + ")", "-sin(" + this.alpha + ")", "   0    ",
+                                "sin(" + this.alpha + ")", "cos(" + this.alpha + ")", "    0    ",
                                 "    0    ", "    0    ", "    1    "
                             };
 
-                            Vector4 column1 = new Vector4((float) Math.Cos(alpha), (float) -Math.Sin(alpha), 0f, 0f);
-                            Vector4 column2 = new Vector4((float) Math.Sin(alpha), (float) Math.Cos(alpha), 0f, 0f);
+                            Vector4 column1 = new Vector4((float) Math.Cos(this.alpha), (float) -Math.Sin(this.alpha), 0f, 0f);
+                            Vector4 column2 = new Vector4((float) Math.Sin(this.alpha), (float) Math.Cos(this.alpha), 0f, 0f);
                             Vector4 column3 = new Vector4(0f, 0f, 1f, 0f);
                             Vector4 column4 = new Vector4(0f, 0f, 0f, 1f);
 
@@ -398,6 +427,9 @@ namespace MarkerBasedARExample
                         }
                         else
                         {
+                            this.alpha = 0.0f;
+                            this.rotationAxisVector = new Vector3(0.0f, 0.0f, 1.0f);
+
                             //else set ? for the value
                             String alpha = "?";
 
@@ -429,9 +461,11 @@ namespace MarkerBasedARExample
                             float alpha = cylinderObject.testTrans.skalar;
                             alpha *= 0.25f;
 
+                            this.scaleVector = new Vector3(alpha, 1.0f, 1.0f);
+
                             String[] matrix =
                             {
-                                "" + alpha, "0", "0",
+                                "" + this.alpha, "0", "0",
                                 "0", "1", "0",
                                 "0", "0", "1"
                             };
@@ -447,6 +481,8 @@ namespace MarkerBasedARExample
                         }
                         else
                         {
+                            this.scaleVector = new Vector3(1.0f,  1.0f, 1.0f);
+                            
                             //else set ? for the value
                             String[] matrix =
                             {
@@ -475,6 +511,8 @@ namespace MarkerBasedARExample
                         {
                             float alpha = cylinderObject.testTrans.skalar;
                             alpha *= 0.25f;
+                            
+                            this.scaleVector = new Vector3(1.0f,  alpha, 1.0f);
 
                             String[] matrix =
                             {
@@ -494,6 +532,8 @@ namespace MarkerBasedARExample
                         }
                         else
                         {
+                            this.scaleVector = new Vector3(1.0f, 1.0f, 1.0f);
+
                             //else set ? for the value
                             String[] matrix =
                             {
@@ -522,6 +562,8 @@ namespace MarkerBasedARExample
                         {
                             float alpha = cylinderObject.testTrans.skalar;
                             alpha *= 0.25f;
+                            
+                            this.scaleVector = new Vector3(1.0f, 1.0f, alpha);
 
                             String[] matrix =
                             {
@@ -541,6 +583,8 @@ namespace MarkerBasedARExample
                         }
                         else
                         {
+                            this.scaleVector = new Vector3(1.0f, 1.0f, 1.0f);
+                            
                             //else set ? for the value
                             String[] matrix =
                             {
