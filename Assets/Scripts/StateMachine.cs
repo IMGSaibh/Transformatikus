@@ -9,6 +9,16 @@ public class StateMachine : MonoBehaviour
     [SerializeField]
     private Translation translationObject;
     public Translation TranslationObject => translationObject;
+    
+    // Reference to rotation script of IP-Paket-Piece.
+    [SerializeField]
+    private Rotation rotationObject;
+    public Rotation RotationObject => rotationObject;
+    
+    // Reference to scaling script of IP-Paket-Piece.
+    [SerializeField]
+    private Scaling scalingObject;
+    public Scaling ScalingObject => scalingObject;
 
     [SerializeField]
     private SceneSwitch sceneSwitch;
@@ -25,7 +35,6 @@ public class StateMachine : MonoBehaviour
  
         //last pass the state
         ChangeState(waitState);
-
     }
 
     // Update is called once per frame
