@@ -13,10 +13,11 @@ public class LoadingSceneState : BaseState
 
         Debug.Log("Loading State");
         Debug.Log("Loaded Game");
-        stateMachineOwner.SceneSwitch.SwitchToScene("Transformatikus");
+        if (stateMachineOwner.SceneSwitch != null)
+            stateMachineOwner.SceneSwitch.SwitchToScene("Transformatikus");
 
 
-     
+
     }
 
 

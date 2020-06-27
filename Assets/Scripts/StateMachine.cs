@@ -5,6 +5,8 @@ public class StateMachine : MonoBehaviour
     // Reference to currently operating state.
     private BaseState currentState;
 
+    public GameObject targetObject;
+
     // Reference to movement script of IP-Paket-Piece.
     [SerializeField]
     private Translation translationObject;

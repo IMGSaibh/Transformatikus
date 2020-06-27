@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using Boo.Lang;
+using System;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class KoordSystemGrid : MonoBehaviour
 {
@@ -17,8 +20,10 @@ public class KoordSystemGrid : MonoBehaviour
     public float startY = 0;
     public float startZ = 0;
 
-
     public int unitLength = 1;
+
+    public GameObject koordSystem;
+
 
     private void Start()
     {
@@ -30,32 +35,47 @@ public class KoordSystemGrid : MonoBehaviour
         startY = transform.position.y;
         startZ = transform.position.z;
 
+        int koordOffsetX = (int)koordSystem.transform.position.x;
+        int koordOffsetY = (int)koordSystem.transform.position.y;
+
+        //float intervall_X = gridSizeX / unitLength;
+        //double intervallLowerBorder_X = -(intervall_X / 2);
+        //intervallLowerBorder_X = Math.Round(intervallLowerBorder_X, 0.0f);
+
+        //float intervall_Y = gridSizeY / unitLength;
+        //double intervallLowerBorder_Y = -(intervall_Y / 2);
+        //intervallLowerBorder_Y = Math.Round(intervallLowerBorder_Y, 0.0f);
+
+
+        for (float i = 0; i <= gridSizeX - koordSystem.transform.localPosition.x; i += unitLength)
+        {
+            CreateWorldText(unitCountX.ToString(), new Vector2(koordOffsetX + i,startY - 0.5f), 300, Color.black, TextAnchor.MiddleCenter, textScale);
+            unitCountX++;
+        }
+
+        for (float i = 0; i < gridSizeY - koordSystem.transform.localPosition.y; i += unitLength)
+        {
+            CreateWorldText(unitCountY.ToString(), new Vector2(startX - 0.5f, koordOffsetY + i), 300, Color.black, TextAnchor.MiddleCenter, textScale);
+            unitCountY++;
+
+        }
+
 
         //for (float i = 0; i <= gridSizeX; i += unitLength)
         //{
-        //    CreateWorldText(unitCountX.ToString(), new Vector2(transform.position.x + i, transform.position.y - 0.5f),300, Color.black, TextAnchor.MiddleCenter, textScale);
+        //    //CreateWorldText(unitCountX.ToString(), new Vector2(startX + i,startY - 0.5f), 300, Color.black, TextAnchor.MiddleCenter, textScale);
+        //    CreateWorldText((intervallLowerBorder_X + unitCountX).ToString(), new Vector2(startX + i, startY - 0.5f), 300, Color.black, TextAnchor.MiddleCenter, textScale);
         //    unitCountX++;
         //}
 
         //for (float i = 0; i <= gridSizeY; i += unitLength)
         //{
-        //    CreateWorldText(unitCountY.ToString(), new Vector2(transform.position.x - 0.5f, transform.position.y + i), 300, Color.black, TextAnchor.MiddleCenter, textScale);
+        //    //CreateWorldText(unitCountY.ToString(), new Vector2(startX - 0.5f, startY + i), 300, Color.black, TextAnchor.MiddleCenter, textScale);
+        //    CreateWorldText((intervallLowerBorder_Y + unitCountY).ToString(), new Vector2(startX - 0.5f, startY + i), 300, Color.black, TextAnchor.MiddleCenter, textScale);
+
         //    unitCountY++;
 
         //}
-
-        for (float i = 0; i <= gridSizeX; i += unitLength)
-        {
-            CreateWorldText(unitCountX.ToString(), new Vector2(startX + i,startY - 0.5f), 300, Color.black, TextAnchor.MiddleCenter, textScale);
-            unitCountX++;
-        }
-
-        for (float i = 0; i <= gridSizeY; i += unitLength)
-        {
-            CreateWorldText(unitCountY.ToString(), new Vector2(startX - 0.5f, startY + i), 300, Color.black, TextAnchor.MiddleCenter, textScale);
-            unitCountY++;
-
-        }
     }
 
     private void OnRenderObject()
