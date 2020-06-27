@@ -153,6 +153,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   translationObject: {fileID: 76868216}
+  rotationObject: {fileID: 0}
+  scalingObject: {fileID: 0}
   sceneSwitch: {fileID: 0}
 --- !u!114 &76868219
 MonoBehaviour:
@@ -293,7 +295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98204bf9599f9fd44adc9876e52f745d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mat: {fileID: 0}
+  mat: {fileID: 2100000, guid: 6feb827dc8feba6498e64d9dd8e4dd45, type: 2}
   gridSizeX: 30
   gridSizeY: 16
   gridSizeZ: 0
