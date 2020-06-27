@@ -1,7 +1,17 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using MarkerBasedARExample.MarkerBasedAR;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class StateMachine : MonoBehaviour
 {
+    /// <summary>
+    /// Bestätigungsbutton.
+    /// </summary>
+    public Button button;
+        
+    public bool confirmed = false;
+    
     // Reference to currently operating state.
     private BaseState currentState;
 
@@ -27,6 +37,12 @@ public class StateMachine : MonoBehaviour
 
     private void Start() 
     {
+        //add button listener
+        button.onClick.AddListener(delegate()
+        {
+            this.ButtonClicked();
+        });
+        
         //create new state like this
         //ChangeState(new WaitState());
 
@@ -64,6 +80,10 @@ public class StateMachine : MonoBehaviour
             currentState.stateMachineOwner = this;
             currentState.PrepareState();
         }
+    }
+
+    public void ButtonClicked () {
+        this.confirmed = !this.confirmed;
     }
 
 

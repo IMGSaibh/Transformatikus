@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Configuration;
 using System.Text;
+using DefaultNamespace;
 using MarkerBasedARExample.MarkerBasedAR;
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UnityUtils;
@@ -22,13 +23,6 @@ namespace MarkerBasedARExample
     [RequireComponent (typeof(WebCamTextureToMatHelper))]
     public class WebCamTextureMarkerBasedARExample : MonoBehaviour
     {
-        /// <summary>
-        /// Bestätigungsbutton.
-        /// </summary>
-        public Button button;
-        
-        private bool confirmed = false;
-        
         /// <summary>
         /// Teilpaket Gameobject.
         /// </summary>
@@ -148,7 +142,7 @@ namespace MarkerBasedARExample
         /// <summary>
         /// Sorted list for found cubes with the class FoundCube
         /// </summary>
-        public List<KeyValuePair<string, FoundCube>> sortedCubes;
+        //public List<KeyValuePair<string, FoundCube>> sortedCubes;
 
         // Use this for initialization
         void Start ()
@@ -156,8 +150,9 @@ namespace MarkerBasedARExample
             markerSettings2 = new List<MarkerSettings>();
             cubeRealLocation = new Dictionary<String, Vector3>();
             foundCubes = new Dictionary<String, FoundCube>();
-            sortedCubes = new List<KeyValuePair<string, FoundCube>>();
-            
+            //sortedCubes = new List<KeyValuePair<string, FoundCube>>();
+            SortedCubesListScript.sortedCubes = new List<KeyValuePair<string, FoundCube>>();
+
             webCamTextureToMatHelper = gameObject.GetComponent<WebCamTextureToMatHelper> ();
 
             //get the sides for every cube
@@ -174,16 +169,16 @@ namespace MarkerBasedARExample
             #endif
             webCamTextureToMatHelper.Initialize ();
             
-            //add button listener
-            button.onClick.AddListener(delegate()
-            {
-                this.ButtonClicked();
-            });
+//            //add button listener
+//            button.onClick.AddListener(delegate()
+//            {
+//                this.ButtonClicked();
+//            });
         }
         
-        public void ButtonClicked () {
-            this.confirmed = !this.confirmed;
-        }
+//        public void ButtonClicked () {
+//            this.confirmed = !this.confirmed;
+//        }
 
         /// <summary>
         /// Raises the web cam texture to mat helper initialized event.
@@ -196,7 +191,6 @@ namespace MarkerBasedARExample
 
             texture = new Texture2D (webCamTextureMat.cols (), webCamTextureMat.rows (), TextureFormat.RGBA32, false);
             gameObject.GetComponent<Renderer> ().material.mainTexture = texture;
-
 
             gameObject.transform.localScale = new Vector3 (webCamTextureMat.cols (), webCamTextureMat.rows (), 1);
             
@@ -416,17 +410,17 @@ namespace MarkerBasedARExample
                 //REIHENFOLGE DER WÜRFEL:
                 //Sort list nach X-Werte für Reihenfolge
                 //List<KeyValuePair<string, FoundCube>> myList2 = foundCubes.ToList();
-                sortedCubes = foundCubes.ToList();
-                sortedCubes.Sort((pair1,pair2) => pair1.Value.cubePosition.x.CompareTo(pair2.Value.cubePosition.x));
-                
-                //Debug.Log(myList[0].Key);
-                //Debug.Log(myList[1].Key);
+                //sortedCubes = foundCubes.ToList();
+                SortedCubesListScript.sortedCubes = foundCubes.ToList();
+                //sortedCubes.Sort((pair1,pair2) => pair1.Value.cubePosition.x.CompareTo(pair2.Value.cubePosition.x));
+                SortedCubesListScript.sortedCubes.Sort((pair1,pair2) => pair1.Value.cubePosition.x.CompareTo(pair2.Value.cubePosition.x));
 
                 StringBuilder reihenfolge = new StringBuilder();
                 StringBuilder reihenfolge2 = new StringBuilder();
 
                 //if (cubeRealLocation.Count > 1)
-                if (sortedCubes.Count > 1)
+                //if (sortedCubes.Count > 1)
+                if (SortedCubesListScript.sortedCubes.Count > 1)
                 {
 //                    for (int i = (myList.Count - 1); i >= 0; i--)
 //                    {
@@ -435,47 +429,50 @@ namespace MarkerBasedARExample
 //                        //Debug.Log(myList[i].Key);
 //                    }
                     
-                    //for (int i = 0; i < myList.Count; i++)
-                    for (int i = 0; i < sortedCubes.Count; i++)
+                    //for (int i = 0; i < sortedCubes.Count; i++)
+                    for (int i = 0; i < SortedCubesListScript.sortedCubes.Count; i++)
                     {
-                        //TODO: get operations and add
                         //Debug.Log(myList2[i].Key +": " +myList2[i].Value.transformationClass.matrixTransformation);
                         //reihenfolge2.Append(myList2[i].Value.transformationClass.testTrans.GetTransformation());
-                        reihenfolge2.Append(sortedCubes[i].Value.transformationClass.testTrans.GetTransformation());
+                        //reihenfolge2.Append(sortedCubes[i].Value.transformationClass.testTrans.GetTransformation());
+                        reihenfolge2.Append(SortedCubesListScript.sortedCubes[i].Value.transformationClass.testTrans.GetTransformation());
                         reihenfolge2.Append("      ");
 
                         if (i == 0)
                         {
-                            firstMatrixText.text = sortedCubes[i].Value.transformationClass.testTrans.GetTransformation();
+                            //firstMatrixText.text = sortedCubes[i].Value.transformationClass.testTrans.GetTransformation();
+                            firstMatrixText.text = SortedCubesListScript.sortedCubes[i].Value.transformationClass.testTrans.GetTransformation();
                         }
                         else if (i == 1)
                         {
-                            secondMatrixText.text = sortedCubes[i].Value.transformationClass.testTrans.GetTransformation();
+                            //secondMatrixText.text = sortedCubes[i].Value.transformationClass.testTrans.GetTransformation();
+                            secondMatrixText.text = SortedCubesListScript.sortedCubes[i].Value.transformationClass.testTrans.GetTransformation();
                         }
                         else
                         {
-                            thirdMatrixText.text = sortedCubes[i].Value.transformationClass.testTrans.GetTransformation();
+                            //thirdMatrixText.text = sortedCubes[i].Value.transformationClass.testTrans.GetTransformation();
+                            thirdMatrixText.text = SortedCubesListScript.sortedCubes[i].Value.transformationClass.testTrans.GetTransformation();
                         }
 
-                        reihenfolge.Append(sortedCubes[i].Key);
+                        //reihenfolge.Append(sortedCubes[i].Key);
+                        reihenfolge.Append(SortedCubesListScript.sortedCubes[i].Key);
                         reihenfolge.Append(", ");
-                        //Debug.Log(myList[i].Key);
                     }
                     
-                    //Debug.Log(reihenfolge.ToString());
-
                     reihenfolgeText.text = reihenfolge.ToString();
                     reihenfolgeTextTransformations.text = reihenfolge2.ToString();
                 }
                 //else if (cubeRealLocation.Count == 1)
-                else if (sortedCubes.Count == 1)
+                //else if (sortedCubes.Count == 1)
+                else if (SortedCubesListScript.sortedCubes.Count == 1)
                 {
-                    //Debug.Log("Würfel: " +myList[0].Key);
-                    reihenfolgeText.text = sortedCubes[0].Key;
-                    //Debug.Log(myList2[0].Key +": " +myList2[0].Value.transformationClass.matrixTransformation);
-                    reihenfolgeTextTransformations.text = sortedCubes[0].Value.transformationClass.testTrans.GetTransformation();
+                    //reihenfolgeText.text = sortedCubes[0].Key;
+                    reihenfolgeText.text = SortedCubesListScript.sortedCubes[0].Key;
+                    //reihenfolgeTextTransformations.text = sortedCubes[0].Value.transformationClass.testTrans.GetTransformation();
+                    reihenfolgeTextTransformations.text = SortedCubesListScript.sortedCubes[0].Value.transformationClass.testTrans.GetTransformation();
                     
-                    firstMatrixText.text = "";
+                    //firstMatrixText.text = sortedCubes[0].Value.transformationClass.testTrans.GetTransformation();
+                    firstMatrixText.text = SortedCubesListScript.sortedCubes[0].Value.transformationClass.testTrans.GetTransformation();
                     secondMatrixText.text = "";
                     thirdMatrixText.text = "";
                 }
@@ -488,243 +485,243 @@ namespace MarkerBasedARExample
                     thirdMatrixText.text = "";
                 }
 
-                //hier werden die Operationen getriggert
-                
-                //wenn genau drei Würfel gelegt wurden (ausgeschlossen ist der Zylinder)
-                if (sortedCubes != null && sortedCubes.Count == 3)
-                {
-                    //Debug.Log("sortedCubes[0]: " + sortedCubes[0].Value.transformationClass.transformationMatrix.operation);
-                    //Debug.Log("sortedCubes[1]: " + sortedCubes[1].Value.transformationClass.transformationMatrix.operation);
-                    //Debug.Log("sortedCubes[2]: " + sortedCubes[2].Value.transformationClass.transformationMatrix.operation);
-
-                    //wenn der mittlere Würfel ein Operationswürfel ist
-                    //der mittlere Würfel MUSS immer eine Operation sein
-                    if (sortedCubes[1].Value.transformationClass.transformationMatrix.elementType ==
-                        IntMatrix.ElementTypes.Operation)
-                    {
-                        //Quatsch-Operationen (Finten) abfragen
-                        if (sortedCubes[1].Value.transformationClass.transformationMatrix.operation == "/"
-                            || sortedCubes[1].Value.transformationClass.transformationMatrix.operation == "%"
-                            || sortedCubes[1].Value.transformationClass.transformationMatrix.operation == "&")
-                        {
-                            Debug.Log("Fehler!");
-                        }
-
-                        //wenn der erste Würfel ein Objekt oder Pivot ist
-                        if (sortedCubes[0].Value.transformationClass.transformationMatrix.elementType ==
-                            IntMatrix.ElementTypes.Objekt
-                            || sortedCubes[0].Value.transformationClass.transformationMatrix.elementType ==
-                            IntMatrix.ElementTypes.Pivot)
-                        {
-                            //dann muss der dritte Würfel ein Translations-Würfel sein
-                            if (sortedCubes[2].Value.transformationClass.transformationMatrix.elementType ==
-                                IntMatrix.ElementTypes.Vector_X
-                                || sortedCubes[2].Value.transformationClass.transformationMatrix.elementType ==
-                                IntMatrix.ElementTypes.Vector_Y
-                                || sortedCubes[2].Value.transformationClass.transformationMatrix.elementType ==
-                                IntMatrix.ElementTypes.Vector_Z
-                                )
-                            {
-                                if (sortedCubes[1].Value.transformationClass.transformationMatrix.operation == "+")
-                                {
-                                    if (confirmed)
-                                    {
-                                        //Plus-Translation durchführen
-                                        //Vector3 translation = sortedCubes[2].Value.transformationClass.testTrans.vector;
-                                        //teilpaket.transform.position += sortedCubes[1].Value.transformationClass.transVector;
-
-                                        //trigger state machine change
-                                        //do a translation
-                                        stateMachine.TranslationObject.Add(sortedCubes[1].Value.transformationClass.transVector);
-
-                                        //change to wait state
-                                        stateMachine.ChangeState(new WaitState());
-                                    }
-                                }
-                                else if (sortedCubes[1].Value.transformationClass.transformationMatrix.operation == "-")
-                                {
-                                    if (confirmed)
-                                    {
-                                        //Minus-Translation durchführen
-                                        //Vector3 translation = sortedCubes[2].Value.transformationClass.testTrans.vector;
-                                        //teilpaket.transform.position -= sortedCubes[1].Value.transformationClass.transVector;
-
-                                        //trigger state machine change
-                                        //do a translation
-                                        stateMachine.TranslationObject.Sub(sortedCubes[1].Value.transformationClass
-                                            .transVector);
-
-                                        //change to wait state
-                                        stateMachine.ChangeState(new WaitState());
-                                    }
-                                }
-                                else
-                                {
-                                    //*-Operation macht keinen Sinn!
-                                    Debug.Log("Fehler!");
-                                }
-                            }
-                            //ansonsten Fehler!
-                            else
-                            {
-                                Debug.Log("Fehler!");
-                            }
-                        }
-                        //wenn der erste Würfel ein Translations-Würfel ist
-                        else if (sortedCubes[0].Value.transformationClass.transformationMatrix.elementType ==
-                                 IntMatrix.ElementTypes.Vector_X
-                                 || sortedCubes[0].Value.transformationClass.transformationMatrix.elementType ==
-                                 IntMatrix.ElementTypes.Vector_Y
-                                 || sortedCubes[0].Value.transformationClass.transformationMatrix.elementType ==
-                                 IntMatrix.ElementTypes.Vector_Z
-                        )
-                        {
-                            //dann MUSS der dritte Würfel ein Objekt/Pivot sein
-                            if (sortedCubes[2].Value.transformationClass.transformationMatrix.elementType ==
-                                IntMatrix.ElementTypes.Objekt
-                                || sortedCubes[2].Value.transformationClass.transformationMatrix.elementType ==
-                                IntMatrix.ElementTypes.Pivot)
-                            {
-                                if (sortedCubes[1].Value.transformationClass.transformationMatrix.operation == "+")
-                                {
-                                    if (confirmed)
-                                    {
-                                        //Plus-Translation durchführen
-                                        //Vector3 translation = sortedCubes[0].Value.transformationClass.testTrans.vector;
-                                        //teilpaket.transform.position += sortedCubes[0].Value.transformationClass.transVector;
-
-                                        //trigger state machine change
-                                        //do a translation
-                                        stateMachine.TranslationObject.Add(sortedCubes[0].Value.transformationClass
-                                            .transVector);
-
-                                        //change to wait state
-                                        stateMachine.ChangeState(new WaitState());
-                                    }
-                                }
-                                else if (sortedCubes[1].Value.transformationClass.transformationMatrix.operation == "-")
-                                {
-                                    if (confirmed)
-                                    {
-                                        //Minus-Translation durchführen
-                                        //Vector3 translation = sortedCubes[0].Value.transformationClass.testTrans.vector;
-                                        //teilpaket.transform.position -= sortedCubes[0].Value.transformationClass.transVector;
-
-                                        //trigger state machine change
-                                        //do a translation
-                                        stateMachine.TranslationObject.Sub(sortedCubes[0].Value.transformationClass
-                                            .transVector);
-
-                                        //change to wait state
-                                        stateMachine.ChangeState(new WaitState());
-                                    }
-                                }
-                                else
-                                {
-                                    //*-Operation macht keinen Sinn!
-                                    Debug.Log("Fehler!");
-                                }
-                            }
-                            else
-                            {
-                                Debug.Log("Fehler");
-                            }
-                        }
-                        //wenn der erste Würfel eine Rotations-Matrix ist
-                        else if (sortedCubes[0].Value.transformationClass.transformationMatrix.elementType ==
-                            IntMatrix.ElementTypes.Rotation_X
-                            || sortedCubes[0].Value.transformationClass.transformationMatrix.elementType ==
-                            IntMatrix.ElementTypes.Rotation_Y
-                            || sortedCubes[0].Value.transformationClass.transformationMatrix.elementType ==
-                            IntMatrix.ElementTypes.Rotation_Z)
-                        {
-                            //dann MUSS der dritte Würfel ein Objekt/Pivot sein
-                            if (sortedCubes[2].Value.transformationClass.transformationMatrix.elementType ==
-                                IntMatrix.ElementTypes.Objekt
-                                || sortedCubes[2].Value.transformationClass.transformationMatrix.elementType ==
-                                IntMatrix.ElementTypes.Pivot)
-                            {
-                                if (sortedCubes[1].Value.transformationClass.transformationMatrix.operation == "*")
-                                {
-                                    if (confirmed)
-                                    {
-                                        //alpha und die Rotationsachse holen
-                                        float alpha = sortedCubes[0].Value.transformationClass.alpha;
-                                        Vector3 axis = sortedCubes[0].Value.transformationClass.rotationAxisVector;
-
-                                        //Rotation ausführen
-                                        //teilpaket.transform.RotateAround(pseudoWorldCoordinateSystem.transform.position, axis, alpha);
-
-                                        //trigger state machine change
-                                        //do a rotation
-                                        stateMachine.RotationObject.Rotate(axis, alpha);
-
-                                        //change to wait state
-                                        stateMachine.ChangeState(new WaitState());
-                                    }
-                                }
-                                else
-                                {
-                                    //+ und - Operation macht keinen Sinn!
-                                    Debug.Log("Fehler!");
-                                }
-                            }
-                            else
-                            {
-                                Debug.Log("Fehler");
-                            }
-                        }
-                        //wenn der erste Würfel eine Skalierungs-Matrix ist
-                        else if (sortedCubes[0].Value.transformationClass.transformationMatrix.elementType ==
-                                 IntMatrix.ElementTypes.Skalierung_X
-                                 || sortedCubes[0].Value.transformationClass.transformationMatrix.elementType ==
-                                 IntMatrix.ElementTypes.Skalierung_Y
-                                 || sortedCubes[0].Value.transformationClass.transformationMatrix.elementType ==
-                                 IntMatrix.ElementTypes.Skalierung_Z)
-                        {
-                            //dann MUSS der dritte Würfel ein Objekt/Pivot sein
-                            if (sortedCubes[2].Value.transformationClass.transformationMatrix.elementType ==
-                                IntMatrix.ElementTypes.Objekt
-                                || sortedCubes[2].Value.transformationClass.transformationMatrix.elementType ==
-                                IntMatrix.ElementTypes.Pivot)
-                            {
-                                if (sortedCubes[1].Value.transformationClass.transformationMatrix.operation == "*")
-                                {
-                                    if (confirmed)
-                                    {
-                                        //Skalierungsvektor holen
-                                        Vector3 scale = sortedCubes[0].Value.transformationClass.scaleVector;
-
-                                        //trigger state machine change
-                                        //do a scaling
-                                        stateMachine.ScalingObject.Scale(pseudoWorldCoordinateSystem.transform, scale);
-
-                                        //change to wait state
-                                        stateMachine.ChangeState(new WaitState());
-                                    }
-                                }
-                                else
-                                {
-                                    //+ und - Operation macht keinen Sinn!
-                                    Debug.Log("Fehler!");
-                                }
-                            }
-                            else
-                            {
-                                Debug.Log("Fehler");
-                            }
-                        }
-                        //TODO: Transponierte Vektoren * Matrix sind möglich, aber noch nicht reingenommen!
-                    }
-                    else
-                    {
-                        Debug.Log("Fehler!");
-                    }
-                }
-                else
-                {
-                    Debug.Log("Nicht genau 3 Würfel gelegt!");
-                }
+//                //hier werden die Operationen getriggert
+//                
+//                //wenn genau drei Würfel gelegt wurden (ausgeschlossen ist der Zylinder)
+//                if (sortedCubes != null && sortedCubes.Count == 3)
+//                {
+//                    //Debug.Log("sortedCubes[0]: " + sortedCubes[0].Value.transformationClass.transformationMatrix.operation);
+//                    //Debug.Log("sortedCubes[1]: " + sortedCubes[1].Value.transformationClass.transformationMatrix.operation);
+//                    //Debug.Log("sortedCubes[2]: " + sortedCubes[2].Value.transformationClass.transformationMatrix.operation);
+//
+//                    //wenn der mittlere Würfel ein Operationswürfel ist
+//                    //der mittlere Würfel MUSS immer eine Operation sein
+//                    if (sortedCubes[1].Value.transformationClass.transformationMatrix.elementType ==
+//                        IntMatrix.ElementTypes.Operation)
+//                    {
+//                        //Quatsch-Operationen (Finten) abfragen
+//                        if (sortedCubes[1].Value.transformationClass.transformationMatrix.operation == "/"
+//                            || sortedCubes[1].Value.transformationClass.transformationMatrix.operation == "%"
+//                            || sortedCubes[1].Value.transformationClass.transformationMatrix.operation == "&")
+//                        {
+//                            Debug.Log("Fehler!");
+//                        }
+//
+//                        //wenn der erste Würfel ein Objekt oder Pivot ist
+//                        if (sortedCubes[0].Value.transformationClass.transformationMatrix.elementType ==
+//                            IntMatrix.ElementTypes.Objekt
+//                            || sortedCubes[0].Value.transformationClass.transformationMatrix.elementType ==
+//                            IntMatrix.ElementTypes.Pivot)
+//                        {
+//                            //dann muss der dritte Würfel ein Translations-Würfel sein
+//                            if (sortedCubes[2].Value.transformationClass.transformationMatrix.elementType ==
+//                                IntMatrix.ElementTypes.Vector_X
+//                                || sortedCubes[2].Value.transformationClass.transformationMatrix.elementType ==
+//                                IntMatrix.ElementTypes.Vector_Y
+//                                || sortedCubes[2].Value.transformationClass.transformationMatrix.elementType ==
+//                                IntMatrix.ElementTypes.Vector_Z
+//                                )
+//                            {
+//                                if (sortedCubes[1].Value.transformationClass.transformationMatrix.operation == "+")
+//                                {
+//                                    if (confirmed)
+//                                    {
+//                                        //Plus-Translation durchführen
+//                                        //Vector3 translation = sortedCubes[2].Value.transformationClass.testTrans.vector;
+//                                        //teilpaket.transform.position += sortedCubes[1].Value.transformationClass.transVector;
+//
+//                                        //trigger state machine change
+//                                        //do a translation
+//                                        stateMachine.TranslationObject.Add(sortedCubes[1].Value.transformationClass.transVector);
+//
+//                                        //change to wait state
+//                                        stateMachine.ChangeState(new WaitState());
+//                                    }
+//                                }
+//                                else if (sortedCubes[1].Value.transformationClass.transformationMatrix.operation == "-")
+//                                {
+//                                    if (confirmed)
+//                                    {
+//                                        //Minus-Translation durchführen
+//                                        //Vector3 translation = sortedCubes[2].Value.transformationClass.testTrans.vector;
+//                                        //teilpaket.transform.position -= sortedCubes[1].Value.transformationClass.transVector;
+//
+//                                        //trigger state machine change
+//                                        //do a translation
+//                                        stateMachine.TranslationObject.Sub(sortedCubes[1].Value.transformationClass
+//                                            .transVector);
+//
+//                                        //change to wait state
+//                                        stateMachine.ChangeState(new WaitState());
+//                                    }
+//                                }
+//                                else
+//                                {
+//                                    //*-Operation macht keinen Sinn!
+//                                    Debug.Log("Fehler!");
+//                                }
+//                            }
+//                            //ansonsten Fehler!
+//                            else
+//                            {
+//                                Debug.Log("Fehler!");
+//                            }
+//                        }
+//                        //wenn der erste Würfel ein Translations-Würfel ist
+//                        else if (sortedCubes[0].Value.transformationClass.transformationMatrix.elementType ==
+//                                 IntMatrix.ElementTypes.Vector_X
+//                                 || sortedCubes[0].Value.transformationClass.transformationMatrix.elementType ==
+//                                 IntMatrix.ElementTypes.Vector_Y
+//                                 || sortedCubes[0].Value.transformationClass.transformationMatrix.elementType ==
+//                                 IntMatrix.ElementTypes.Vector_Z
+//                        )
+//                        {
+//                            //dann MUSS der dritte Würfel ein Objekt/Pivot sein
+//                            if (sortedCubes[2].Value.transformationClass.transformationMatrix.elementType ==
+//                                IntMatrix.ElementTypes.Objekt
+//                                || sortedCubes[2].Value.transformationClass.transformationMatrix.elementType ==
+//                                IntMatrix.ElementTypes.Pivot)
+//                            {
+//                                if (sortedCubes[1].Value.transformationClass.transformationMatrix.operation == "+")
+//                                {
+//                                    if (confirmed)
+//                                    {
+//                                        //Plus-Translation durchführen
+//                                        //Vector3 translation = sortedCubes[0].Value.transformationClass.testTrans.vector;
+//                                        //teilpaket.transform.position += sortedCubes[0].Value.transformationClass.transVector;
+//
+//                                        //trigger state machine change
+//                                        //do a translation
+//                                        stateMachine.TranslationObject.Add(sortedCubes[0].Value.transformationClass
+//                                            .transVector);
+//
+//                                        //change to wait state
+//                                        stateMachine.ChangeState(new WaitState());
+//                                    }
+//                                }
+//                                else if (sortedCubes[1].Value.transformationClass.transformationMatrix.operation == "-")
+//                                {
+//                                    if (confirmed)
+//                                    {
+//                                        //Minus-Translation durchführen
+//                                        //Vector3 translation = sortedCubes[0].Value.transformationClass.testTrans.vector;
+//                                        //teilpaket.transform.position -= sortedCubes[0].Value.transformationClass.transVector;
+//
+//                                        //trigger state machine change
+//                                        //do a translation
+//                                        stateMachine.TranslationObject.Sub(sortedCubes[0].Value.transformationClass
+//                                            .transVector);
+//
+//                                        //change to wait state
+//                                        stateMachine.ChangeState(new WaitState());
+//                                    }
+//                                }
+//                                else
+//                                {
+//                                    //*-Operation macht keinen Sinn!
+//                                    Debug.Log("Fehler!");
+//                                }
+//                            }
+//                            else
+//                            {
+//                                Debug.Log("Fehler");
+//                            }
+//                        }
+//                        //wenn der erste Würfel eine Rotations-Matrix ist
+//                        else if (sortedCubes[0].Value.transformationClass.transformationMatrix.elementType ==
+//                            IntMatrix.ElementTypes.Rotation_X
+//                            || sortedCubes[0].Value.transformationClass.transformationMatrix.elementType ==
+//                            IntMatrix.ElementTypes.Rotation_Y
+//                            || sortedCubes[0].Value.transformationClass.transformationMatrix.elementType ==
+//                            IntMatrix.ElementTypes.Rotation_Z)
+//                        {
+//                            //dann MUSS der dritte Würfel ein Objekt/Pivot sein
+//                            if (sortedCubes[2].Value.transformationClass.transformationMatrix.elementType ==
+//                                IntMatrix.ElementTypes.Objekt
+//                                || sortedCubes[2].Value.transformationClass.transformationMatrix.elementType ==
+//                                IntMatrix.ElementTypes.Pivot)
+//                            {
+//                                if (sortedCubes[1].Value.transformationClass.transformationMatrix.operation == "*")
+//                                {
+//                                    if (confirmed)
+//                                    {
+//                                        //alpha und die Rotationsachse holen
+//                                        float alpha = sortedCubes[0].Value.transformationClass.alpha;
+//                                        Vector3 axis = sortedCubes[0].Value.transformationClass.rotationAxisVector;
+//
+//                                        //Rotation ausführen
+//                                        //teilpaket.transform.RotateAround(pseudoWorldCoordinateSystem.transform.position, axis, alpha);
+//
+//                                        //trigger state machine change
+//                                        //do a rotation
+//                                        stateMachine.RotationObject.Rotate(axis, alpha);
+//
+//                                        //change to wait state
+//                                        stateMachine.ChangeState(new WaitState());
+//                                    }
+//                                }
+//                                else
+//                                {
+//                                    //+ und - Operation macht keinen Sinn!
+//                                    Debug.Log("Fehler!");
+//                                }
+//                            }
+//                            else
+//                            {
+//                                Debug.Log("Fehler");
+//                            }
+//                        }
+//                        //wenn der erste Würfel eine Skalierungs-Matrix ist
+//                        else if (sortedCubes[0].Value.transformationClass.transformationMatrix.elementType ==
+//                                 IntMatrix.ElementTypes.Skalierung_X
+//                                 || sortedCubes[0].Value.transformationClass.transformationMatrix.elementType ==
+//                                 IntMatrix.ElementTypes.Skalierung_Y
+//                                 || sortedCubes[0].Value.transformationClass.transformationMatrix.elementType ==
+//                                 IntMatrix.ElementTypes.Skalierung_Z)
+//                        {
+//                            //dann MUSS der dritte Würfel ein Objekt/Pivot sein
+//                            if (sortedCubes[2].Value.transformationClass.transformationMatrix.elementType ==
+//                                IntMatrix.ElementTypes.Objekt
+//                                || sortedCubes[2].Value.transformationClass.transformationMatrix.elementType ==
+//                                IntMatrix.ElementTypes.Pivot)
+//                            {
+//                                if (sortedCubes[1].Value.transformationClass.transformationMatrix.operation == "*")
+//                                {
+//                                    if (confirmed)
+//                                    {
+//                                        //Skalierungsvektor holen
+//                                        Vector3 scale = sortedCubes[0].Value.transformationClass.scaleVector;
+//
+//                                        //trigger state machine change
+//                                        //do a scaling
+//                                        stateMachine.ScalingObject.Scale(pseudoWorldCoordinateSystem.transform, scale);
+//
+//                                        //change to wait state
+//                                        stateMachine.ChangeState(new WaitState());
+//                                    }
+//                                }
+//                                else
+//                                {
+//                                    //+ und - Operation macht keinen Sinn!
+//                                    Debug.Log("Fehler!");
+//                                }
+//                            }
+//                            else
+//                            {
+//                                Debug.Log("Fehler");
+//                            }
+//                        }
+//                        //TODO: Transponierte Vektoren * Matrix sind möglich, aber noch nicht reingenommen!
+//                    }
+//                    else
+//                    {
+//                        Debug.Log("Fehler!");
+//                    }
+//                }
+//                else
+//                {
+//                    Debug.Log("Nicht genau 3 Würfel gelegt!");
+//                }
             }
         }
 
