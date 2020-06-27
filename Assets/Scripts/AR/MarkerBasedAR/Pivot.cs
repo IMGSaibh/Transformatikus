@@ -12,6 +12,10 @@ namespace MarkerBasedARExample.MarkerBasedAR
                 "Pivot"
             };
         }
+        
+        public Pivot(String[] content) : base(content)
+        {
+        }
 
         public override String GetTransformation()
         {

@@ -1,5 +1,103 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &6519969044972111518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 17574139333642280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bf5d2a15a8bb4b649e8f1432bd150ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 1100853903682786298}
+  transformationMatrix:
+    elementType: 18
+    matrixSize: 3
+    matrixData:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    vectorData:
+    - 
+    - 
+    - 
+    operation: 
+  transVector: {x: 0, y: 0, z: 0}
+  scaleVector: {x: 0, y: 0, z: 0}
+  rotationAxisVector: {x: 0, y: 0, z: 0}
+  alpha: 0
+  cylinderObject: {fileID: 0}
+--- !u!1 &888558470235536717
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5573481509744037169}
+  m_Layer: 8
+  m_Name: ARObjects
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &5573481509744037169
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 888558470235536717}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 6192724056260328529}
+  m_Father: {fileID: 5147871789047111079}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1100853903682786298
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8091386992176506616}
+  m_Layer: 8
+  m_Name: ARObjects
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &8091386992176506616
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1100853903682786298}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4529823895222228925}
+  m_Father: {fileID: 17574139333382270}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2967440946181593280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,8 +161,12 @@ Transform:
   m_LocalPosition: {x: 853.8184, y: 418.83438, z: -582.61304}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 2967440946803844591}
   - {fileID: 2967440946181739085}
+  - {fileID: 2967440946803844591}
+  - {fileID: 17574139333382270}
+  - {fileID: 6181032721076954469}
+  - {fileID: 7773415944572249521}
+  - {fileID: 5147871789047111079}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -166,6 +268,313 @@ Transform:
   m_Father: {fileID: 2967440946803844591}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4399879916120419353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5147871789047367153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bf5d2a15a8bb4b649e8f1432bd150ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 888558470235536717}
+  transformationMatrix:
+    elementType: 16
+    matrixSize: 3
+    matrixData:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    vectorData:
+    - 
+    - 
+    - 
+    operation: 
+  transVector: {x: 0, y: 0, z: 0}
+  scaleVector: {x: 0, y: 0, z: 0}
+  rotationAxisVector: {x: 0, y: 0, z: 0}
+  alpha: 0
+  cylinderObject: {fileID: 0}
+--- !u!1 &6114128019724071346
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6039324413068250874}
+  m_Layer: 8
+  m_Name: ARObjects
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &6039324413068250874
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6114128019724071346}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 3118670174782107558}
+  m_Father: {fileID: 6181032721076954469}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5572380640713162475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6181032721077222707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bf5d2a15a8bb4b649e8f1432bd150ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 6114128019724071346}
+  transformationMatrix:
+    elementType: 19
+    matrixSize: 3
+    matrixData:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    vectorData:
+    - 
+    - 
+    - 
+    operation: 
+  transVector: {x: 0, y: 0, z: 0}
+  scaleVector: {x: 0, y: 0, z: 0}
+  rotationAxisVector: {x: 0, y: 0, z: 0}
+  alpha: 0
+  cylinderObject: {fileID: 0}
+--- !u!114 &8616968162844888591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7773415944571993575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bf5d2a15a8bb4b649e8f1432bd150ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 7857412498779699436}
+  transformationMatrix:
+    elementType: 17
+    matrixSize: 3
+    matrixData:
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    vectorData:
+    - 
+    - 
+    - 
+    operation: 
+  transVector: {x: 0, y: 0, z: 0}
+  scaleVector: {x: 0, y: 0, z: 0}
+  rotationAxisVector: {x: 0, y: 0, z: 0}
+  alpha: 0
+  cylinderObject: {fileID: 0}
+--- !u!1 &7857412498779699436
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5783622368165030359}
+  m_Layer: 8
+  m_Name: ARObjects
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &5783622368165030359
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7857412498779699436}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 3107112621637755797}
+  m_Father: {fileID: 7773415944572249521}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &17574139333565174
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2967440946187179816}
+    m_Modifications:
+    - target: {fileID: 185054, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: m_Name
+      value: CubeSide3
+      objectReference: {fileID: 0}
+    - target: {fileID: 445064, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -853.8184
+      objectReference: {fileID: 0}
+    - target: {fileID: 445064, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -418.83438
+      objectReference: {fileID: 0}
+    - target: {fileID: 445064, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 582.61304
+      objectReference: {fileID: 0}
+    - target: {fileID: 445064, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 445064, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 445064, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 445064, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 445064, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.size
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.gridSize
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[3]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[4]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[7]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: ARGameObject
+      value: 
+      objectReference: {fileID: 1100853903682786298}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: displayableMaxCount
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[9]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[11]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[5]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[2]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[13]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[10]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[6]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[12]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[15]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[14]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[8]
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+--- !u!1 &17574139333642280 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 185054, guid: 70d61c31003d5734394479c2dd8aa3ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 17574139333565174}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &17574139333382270 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 445064, guid: 70d61c31003d5734394479c2dd8aa3ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 17574139333565174}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2967440946181593285
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -207,7 +616,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 445064, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
       propertyPath: markerDesign.data.Array.size
@@ -355,15 +764,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
---- !u!1 &2967440946181474843 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 185054, guid: 70d61c31003d5734394479c2dd8aa3ee,
-    type: 3}
-  m_PrefabInstance: {fileID: 2967440946181593285}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2967440946181739085 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 445064, guid: 70d61c31003d5734394479c2dd8aa3ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 2967440946181593285}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2967440946181474843 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 185054, guid: 70d61c31003d5734394479c2dd8aa3ee,
     type: 3}
   m_PrefabInstance: {fileID: 2967440946181593285}
   m_PrefabAsset: {fileID: 0}
@@ -510,7 +919,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 445064, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
       propertyPath: markerDesign.data.Array.size
@@ -594,15 +1003,630 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+--- !u!4 &2967440946803844591 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 445064, guid: 70d61c31003d5734394479c2dd8aa3ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 2967440946804289383}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2967440946804112825 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 185054, guid: 70d61c31003d5734394479c2dd8aa3ee,
     type: 3}
   m_PrefabInstance: {fileID: 2967440946804289383}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &2967440946803844591 stripped
+--- !u!1001 &3107112621638154517
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 5783622368165030359}
+    m_Modifications:
+    - target: {fileID: 400000, guid: d607aa1e2987cf5448fca2348df9adb8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d607aa1e2987cf5448fca2348df9adb8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d607aa1e2987cf5448fca2348df9adb8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d607aa1e2987cf5448fca2348df9adb8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d607aa1e2987cf5448fca2348df9adb8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d607aa1e2987cf5448fca2348df9adb8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d607aa1e2987cf5448fca2348df9adb8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d607aa1e2987cf5448fca2348df9adb8, type: 3}
+      propertyPath: m_RootMapOrder
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d607aa1e2987cf5448fca2348df9adb8, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d607aa1e2987cf5448fca2348df9adb8, type: 3}
+--- !u!4 &3107112621637755797 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400000, guid: d607aa1e2987cf5448fca2348df9adb8,
+    type: 3}
+  m_PrefabInstance: {fileID: 3107112621638154517}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3118670174781715750
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6039324413068250874}
+    m_Modifications:
+    - target: {fileID: 400000, guid: d607aa1e2987cf5448fca2348df9adb8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d607aa1e2987cf5448fca2348df9adb8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d607aa1e2987cf5448fca2348df9adb8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d607aa1e2987cf5448fca2348df9adb8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d607aa1e2987cf5448fca2348df9adb8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d607aa1e2987cf5448fca2348df9adb8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d607aa1e2987cf5448fca2348df9adb8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d607aa1e2987cf5448fca2348df9adb8, type: 3}
+      propertyPath: m_RootMapOrder
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d607aa1e2987cf5448fca2348df9adb8, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d607aa1e2987cf5448fca2348df9adb8, type: 3}
+--- !u!4 &3118670174782107558 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400000, guid: d607aa1e2987cf5448fca2348df9adb8,
+    type: 3}
+  m_PrefabInstance: {fileID: 3118670174781715750}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4529823895222095165
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8091386992176506616}
+    m_Modifications:
+    - target: {fileID: 400000, guid: d607aa1e2987cf5448fca2348df9adb8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d607aa1e2987cf5448fca2348df9adb8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d607aa1e2987cf5448fca2348df9adb8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d607aa1e2987cf5448fca2348df9adb8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d607aa1e2987cf5448fca2348df9adb8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d607aa1e2987cf5448fca2348df9adb8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d607aa1e2987cf5448fca2348df9adb8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d607aa1e2987cf5448fca2348df9adb8, type: 3}
+      propertyPath: m_RootMapOrder
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d607aa1e2987cf5448fca2348df9adb8, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d607aa1e2987cf5448fca2348df9adb8, type: 3}
+--- !u!4 &4529823895222228925 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400000, guid: d607aa1e2987cf5448fca2348df9adb8,
+    type: 3}
+  m_PrefabInstance: {fileID: 4529823895222095165}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5147871789047519023
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2967440946187179816}
+    m_Modifications:
+    - target: {fileID: 185054, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: m_Name
+      value: CubeSide6
+      objectReference: {fileID: 0}
+    - target: {fileID: 445064, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -853.8184
+      objectReference: {fileID: 0}
+    - target: {fileID: 445064, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -418.83438
+      objectReference: {fileID: 0}
+    - target: {fileID: 445064, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 582.61304
+      objectReference: {fileID: 0}
+    - target: {fileID: 445064, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 445064, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 445064, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 445064, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 445064, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.size
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.gridSize
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[3]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[4]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[7]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: ARGameObject
+      value: 
+      objectReference: {fileID: 888558470235536717}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: displayableMaxCount
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[9]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[11]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[5]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[2]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[13]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[10]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[6]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[12]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[15]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[14]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[8]
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+--- !u!1 &5147871789047367153 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 185054, guid: 70d61c31003d5734394479c2dd8aa3ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 5147871789047519023}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5147871789047111079 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 445064, guid: 70d61c31003d5734394479c2dd8aa3ee,
     type: 3}
-  m_PrefabInstance: {fileID: 2967440946804289383}
+  m_PrefabInstance: {fileID: 5147871789047519023}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6181032721077071853
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2967440946187179816}
+    m_Modifications:
+    - target: {fileID: 185054, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: m_Name
+      value: CubeSide4
+      objectReference: {fileID: 0}
+    - target: {fileID: 445064, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -853.8184
+      objectReference: {fileID: 0}
+    - target: {fileID: 445064, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -418.83438
+      objectReference: {fileID: 0}
+    - target: {fileID: 445064, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 582.61304
+      objectReference: {fileID: 0}
+    - target: {fileID: 445064, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 445064, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 445064, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 445064, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 445064, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.size
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.gridSize
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[3]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[4]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[7]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: ARGameObject
+      value: 
+      objectReference: {fileID: 6114128019724071346}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: displayableMaxCount
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[9]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[11]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[5]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[2]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[13]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[10]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[6]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[12]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[15]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[14]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[8]
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+--- !u!4 &6181032721076954469 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 445064, guid: 70d61c31003d5734394479c2dd8aa3ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 6181032721077071853}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6181032721077222707 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 185054, guid: 70d61c31003d5734394479c2dd8aa3ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 6181032721077071853}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6192724056260716241
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 5573481509744037169}
+    m_Modifications:
+    - target: {fileID: 400000, guid: d607aa1e2987cf5448fca2348df9adb8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d607aa1e2987cf5448fca2348df9adb8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d607aa1e2987cf5448fca2348df9adb8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d607aa1e2987cf5448fca2348df9adb8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d607aa1e2987cf5448fca2348df9adb8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d607aa1e2987cf5448fca2348df9adb8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d607aa1e2987cf5448fca2348df9adb8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d607aa1e2987cf5448fca2348df9adb8, type: 3}
+      propertyPath: m_RootMapOrder
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d607aa1e2987cf5448fca2348df9adb8, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d607aa1e2987cf5448fca2348df9adb8, type: 3}
+--- !u!4 &6192724056260328529 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400000, guid: d607aa1e2987cf5448fca2348df9adb8,
+    type: 3}
+  m_PrefabInstance: {fileID: 6192724056260716241}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7773415944571907897
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2967440946187179816}
+    m_Modifications:
+    - target: {fileID: 185054, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: m_Name
+      value: CubeSide5
+      objectReference: {fileID: 0}
+    - target: {fileID: 445064, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -853.8184
+      objectReference: {fileID: 0}
+    - target: {fileID: 445064, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -418.83438
+      objectReference: {fileID: 0}
+    - target: {fileID: 445064, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 582.61304
+      objectReference: {fileID: 0}
+    - target: {fileID: 445064, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 445064, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 445064, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 445064, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 445064, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.size
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.gridSize
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[3]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[4]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[7]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: ARGameObject
+      value: 
+      objectReference: {fileID: 7857412498779699436}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: displayableMaxCount
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[9]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[11]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[5]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[2]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[13]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[10]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[6]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[12]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[15]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[14]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11444642, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+      propertyPath: markerDesign.data.Array.data[8]
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 70d61c31003d5734394479c2dd8aa3ee, type: 3}
+--- !u!4 &7773415944572249521 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 445064, guid: 70d61c31003d5734394479c2dd8aa3ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 7773415944571907897}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7773415944571993575 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 185054, guid: 70d61c31003d5734394479c2dd8aa3ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 7773415944571907897}
   m_PrefabAsset: {fileID: 0}

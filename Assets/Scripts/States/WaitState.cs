@@ -183,7 +183,13 @@ public class WaitState : BaseState
                     || SortedCubesListScript.sortedCubes[0].Value.transformationClass.transformationMatrix.elementType ==
                     IntMatrix.ElementTypes.Rotation_Y
                     || SortedCubesListScript.sortedCubes[0].Value.transformationClass.transformationMatrix.elementType ==
-                    IntMatrix.ElementTypes.Rotation_Z)
+                    IntMatrix.ElementTypes.Rotation_Z
+                    || SortedCubesListScript.sortedCubes[0].Value.transformationClass.transformationMatrix.elementType ==
+                    IntMatrix.ElementTypes.Rotation_X_neg
+                    || SortedCubesListScript.sortedCubes[0].Value.transformationClass.transformationMatrix.elementType ==
+                    IntMatrix.ElementTypes.Rotation_Y_neg
+                    || SortedCubesListScript.sortedCubes[0].Value.transformationClass.transformationMatrix.elementType ==
+                    IntMatrix.ElementTypes.Rotation_Z_neg)
                 {
                     //dann MUSS der dritte Würfel ein Objekt/Pivot sein
                     if (SortedCubesListScript.sortedCubes[2].Value.transformationClass.transformationMatrix.elementType ==

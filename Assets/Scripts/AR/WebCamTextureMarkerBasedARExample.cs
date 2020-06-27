@@ -24,21 +24,6 @@ namespace MarkerBasedARExample
     public class WebCamTextureMarkerBasedARExample : MonoBehaviour
     {
         /// <summary>
-        /// Teilpaket Gameobject.
-        /// </summary>
-        public GameObject teilpaket;
-
-        /// <summary>
-        /// state machine of the teilpaket.
-        /// </summary>
-        public StateMachine stateMachine;
-        
-        /// <summary>
-        /// Pseudo-Koordinatensytem Gameobject.
-        /// </summary>
-        public GameObject pseudoWorldCoordinateSystem;
-        
-        /// <summary>
         /// The AR camera.
         /// </summary>
         public Camera ARCamera;
@@ -52,17 +37,7 @@ namespace MarkerBasedARExample
         /// The cubes.
         /// </summary>
         public GameObject[] cubes;
-        
-        /// <summary>
-        /// The reihenfolge text.
-        /// </summary>
-        public Text reihenfolgeText;
-        
-        /// <summary>
-        /// The reihenfolge text with transformations.
-        /// </summary>
-        public Text reihenfolgeTextTransformations;
-        
+
         /// <summary>
         /// The first matrix text.
         /// </summary>
@@ -139,18 +114,11 @@ namespace MarkerBasedARExample
         /// </summary>
         private Dictionary<String,FoundCube> foundCubes;
 
-        /// <summary>
-        /// Sorted list for found cubes with the class FoundCube
-        /// </summary>
-        //public List<KeyValuePair<string, FoundCube>> sortedCubes;
-
         // Use this for initialization
         void Start ()
         {
             markerSettings2 = new List<MarkerSettings>();
-            cubeRealLocation = new Dictionary<String, Vector3>();
             foundCubes = new Dictionary<String, FoundCube>();
-            //sortedCubes = new List<KeyValuePair<string, FoundCube>>();
             SortedCubesListScript.sortedCubes = new List<KeyValuePair<string, FoundCube>>();
 
             webCamTextureToMatHelper = gameObject.GetComponent<WebCamTextureToMatHelper> ();
@@ -158,9 +126,7 @@ namespace MarkerBasedARExample
             //get the sides for every cube
             foreach (var cube in cubes)
             {
-                //MarkerSettings[] markerSidesFromCube = cube.GetComponentsInChildren<MarkerSettings>();
                 markerSettings2.AddRange(cube.GetComponentsInChildren<MarkerSettings>());
-                //Debug.Log(markerSettings2[0]);
             }
 
             #if UNITY_ANDROID && !UNITY_EDITOR
@@ -168,17 +134,7 @@ namespace MarkerBasedARExample
             webCamTextureToMatHelper.avoidAndroidFrontCameraLowLightIssue = true;
             #endif
             webCamTextureToMatHelper.Initialize ();
-            
-//            //add button listener
-//            button.onClick.AddListener(delegate()
-//            {
-//                this.ButtonClicked();
-//            });
         }
-        
-//        public void ButtonClicked () {
-//            this.confirmed = !this.confirmed;
-//        }
 
         /// <summary>
         /// Raises the web cam texture to mat helper initialized event.
@@ -191,11 +147,15 @@ namespace MarkerBasedARExample
 
             texture = new Texture2D (webCamTextureMat.cols (), webCamTextureMat.rows (), TextureFormat.RGBA32, false);
             gameObject.GetComponent<Renderer> ().material.mainTexture = texture;
-
-            gameObject.transform.localScale = new Vector3 (webCamTextureMat.cols (), webCamTextureMat.rows (), 1);
             
-            Debug.Log ("Screen.width " + Screen.width + " Screen.height " + Screen.height + " Screen.orientation " + Screen.orientation);
+            //hier wird die Größe des sichtbaren Bereichs eingestellt
+            gameObject.transform.localScale = new Vector3 (20, 10, 1);
+            //gameObject.transform.localScale = new Vector3 (webCamTextureMat.cols (), webCamTextureMat.rows (), 1);
+            
+            //auf dem Bildschirm verschieben
+            gameObject.transform.position = new Vector3(25.0f, -5f, 0f);
 
+            Debug.Log ("Screen.width " + Screen.width + " Screen.height " + Screen.height + " Screen.orientation " + Screen.orientation);
 
             float width = webCamTextureMat.width ();
             float height = webCamTextureMat.height ();
@@ -204,10 +164,12 @@ namespace MarkerBasedARExample
             float widthScale = (float)Screen.width / width;
             float heightScale = (float)Screen.height / height;
             if (widthScale < heightScale) {
+                Debug.Log("bin hier drin!");
                 Camera.main.orthographicSize = (width * (float)Screen.height / (float)Screen.width) / 2;
                 imageSizeScale = (float)Screen.height / (float)Screen.width;
             } else {
-                Camera.main.orthographicSize = height / 2;
+                //das ist die Stelle, an der die Kamera zu weit weg zoomt!
+                //Camera.main.orthographicSize = height / 2;
             }
 
             
@@ -227,10 +189,11 @@ namespace MarkerBasedARExample
             camMatrix.put (2, 0, 0);
             camMatrix.put (2, 1, 0);
             camMatrix.put (2, 2, 1.0f);
-            Debug.Log ("camMatrix " + camMatrix.dump ());
+            
+//            Debug.Log ("camMatrix " + camMatrix.dump ());
             
             distCoeffs = new MatOfDouble (0, 0, 0, 0);
-            Debug.Log ("distCoeffs " + distCoeffs.dump ());
+//            Debug.Log ("distCoeffs " + distCoeffs.dump ());
             
             //calibration camera
             Size imageSize = new Size (width * imageSizeScale, height * imageSizeScale);
@@ -241,28 +204,25 @@ namespace MarkerBasedARExample
             double[] focalLength = new double[1];
             Point principalPoint = new Point (0, 0);
             double[] aspectratio = new double[1];
-            
-            
+
             Calib3d.calibrationMatrixValues (camMatrix, imageSize, apertureWidth, apertureHeight, fovx, fovy, focalLength, principalPoint, aspectratio);
             
-            Debug.Log ("imageSize " + imageSize.ToString ());
-            Debug.Log ("apertureWidth " + apertureWidth);
-            Debug.Log ("apertureHeight " + apertureHeight);
-            Debug.Log ("fovx " + fovx [0]);
-            Debug.Log ("fovy " + fovy [0]);
-            Debug.Log ("focalLength " + focalLength [0]);
-            Debug.Log ("principalPoint " + principalPoint.ToString ());
-            Debug.Log ("aspectratio " + aspectratio [0]);
-
+//            Debug.Log ("imageSize " + imageSize.ToString ());
+//            Debug.Log ("apertureWidth " + apertureWidth);
+//            Debug.Log ("apertureHeight " + apertureHeight);
+//            Debug.Log ("fovx " + fovx [0]);
+//            Debug.Log ("fovy " + fovy [0]);
+//            Debug.Log ("focalLength " + focalLength [0]);
+//            Debug.Log ("principalPoint " + principalPoint.ToString ());
+//            Debug.Log ("aspectratio " + aspectratio [0]);
 
             //To convert the difference of the FOV value of the OpenCV and Unity. 
             double fovXScale = (2.0 * Mathf.Atan ((float)(imageSize.width / (2.0 * fx)))) / (Mathf.Atan2 ((float)cx, (float)fx) + Mathf.Atan2 ((float)(imageSize.width - cx), (float)fx));
             double fovYScale = (2.0 * Mathf.Atan ((float)(imageSize.height / (2.0 * fy)))) / (Mathf.Atan2 ((float)cy, (float)fy) + Mathf.Atan2 ((float)(imageSize.height - cy), (float)fy));
             
-            Debug.Log ("fovXScale " + fovXScale);
-            Debug.Log ("fovYScale " + fovYScale);
-            
-            
+//            Debug.Log ("fovXScale " + fovXScale);
+//            Debug.Log ("fovYScale " + fovYScale);
+
             //Adjust Unity Camera FOV https://github.com/opencv/opencv/commit/8ed1945ccd52501f5ab22bdec6aa1f91f1e2cfd4
             if (widthScale < heightScale) {
                 ARCamera.fieldOfView = (float)(fovx [0] * fovXScale);
@@ -270,7 +230,6 @@ namespace MarkerBasedARExample
                 ARCamera.fieldOfView = (float)(fovy [0] * fovYScale);
             }
 
-            
             //MarkerDesign[] markerDesigns = new MarkerDesign[markerSettings.Length];
             MarkerDesign[] markerDesigns = new MarkerDesign[markerSettings2.Count];
             
@@ -280,8 +239,6 @@ namespace MarkerBasedARExample
             }
 
             markerDetector = new MarkerDetector (camMatrix, distCoeffs, markerDesigns);
-
-
 
             invertYM = Matrix4x4.TRS (Vector3.zero, Quaternion.identity, new Vector3 (1, -1, 1));
             Debug.Log ("invertYM " + invertYM.ToString ());
@@ -339,7 +296,6 @@ namespace MarkerBasedARExample
                     
                             if (marker.id == settings.getMarkerId ()) {
                                 transformationM = marker.transformation;
-//                                                      Debug.Log ("transformationM " + transformationM.ToString ());
 
                                 GameObject ARGameObject = settings.getARGameObject ();
                                 if (ARGameObject != null) {
@@ -352,7 +308,6 @@ namespace MarkerBasedARExample
                         }
                     }
                 } else {
-                    cubeRealLocation.Clear();
                     foundCubes.Clear();
 
                     List<Marker> findMarkers = markerDetector.getFindMarkers ();
@@ -409,68 +364,29 @@ namespace MarkerBasedARExample
 
                 //REIHENFOLGE DER WÜRFEL:
                 //Sort list nach X-Werte für Reihenfolge
-                //List<KeyValuePair<string, FoundCube>> myList2 = foundCubes.ToList();
-                //sortedCubes = foundCubes.ToList();
                 SortedCubesListScript.sortedCubes = foundCubes.ToList();
-                //sortedCubes.Sort((pair1,pair2) => pair1.Value.cubePosition.x.CompareTo(pair2.Value.cubePosition.x));
                 SortedCubesListScript.sortedCubes.Sort((pair1,pair2) => pair1.Value.cubePosition.x.CompareTo(pair2.Value.cubePosition.x));
 
-                StringBuilder reihenfolge = new StringBuilder();
-                StringBuilder reihenfolge2 = new StringBuilder();
-
-                //if (cubeRealLocation.Count > 1)
-                //if (sortedCubes.Count > 1)
                 if (SortedCubesListScript.sortedCubes.Count > 1)
                 {
-//                    for (int i = (myList.Count - 1); i >= 0; i--)
-//                    {
-//                        reihenfolge.Append(myList[i].Key);
-//                        reihenfolge.Append(", ");
-//                        //Debug.Log(myList[i].Key);
-//                    }
-                    
-                    //for (int i = 0; i < sortedCubes.Count; i++)
                     for (int i = 0; i < SortedCubesListScript.sortedCubes.Count; i++)
                     {
-                        //Debug.Log(myList2[i].Key +": " +myList2[i].Value.transformationClass.matrixTransformation);
-                        //reihenfolge2.Append(myList2[i].Value.transformationClass.testTrans.GetTransformation());
-                        //reihenfolge2.Append(sortedCubes[i].Value.transformationClass.testTrans.GetTransformation());
-                        reihenfolge2.Append(SortedCubesListScript.sortedCubes[i].Value.transformationClass.testTrans.GetTransformation());
-                        reihenfolge2.Append("      ");
-
                         if (i == 0)
                         {
-                            //firstMatrixText.text = sortedCubes[i].Value.transformationClass.testTrans.GetTransformation();
                             firstMatrixText.text = SortedCubesListScript.sortedCubes[i].Value.transformationClass.testTrans.GetTransformation();
                         }
                         else if (i == 1)
                         {
-                            //secondMatrixText.text = sortedCubes[i].Value.transformationClass.testTrans.GetTransformation();
                             secondMatrixText.text = SortedCubesListScript.sortedCubes[i].Value.transformationClass.testTrans.GetTransformation();
                         }
-                        else
+                        else if(i == 2)
                         {
-                            //thirdMatrixText.text = sortedCubes[i].Value.transformationClass.testTrans.GetTransformation();
                             thirdMatrixText.text = SortedCubesListScript.sortedCubes[i].Value.transformationClass.testTrans.GetTransformation();
                         }
-
-                        //reihenfolge.Append(sortedCubes[i].Key);
-                        reihenfolge.Append(SortedCubesListScript.sortedCubes[i].Key);
-                        reihenfolge.Append(", ");
                     }
-                    
-                    reihenfolgeText.text = reihenfolge.ToString();
-                    reihenfolgeTextTransformations.text = reihenfolge2.ToString();
                 }
-                //else if (cubeRealLocation.Count == 1)
-                //else if (sortedCubes.Count == 1)
                 else if (SortedCubesListScript.sortedCubes.Count == 1)
                 {
-                    //reihenfolgeText.text = sortedCubes[0].Key;
-                    reihenfolgeText.text = SortedCubesListScript.sortedCubes[0].Key;
-                    //reihenfolgeTextTransformations.text = sortedCubes[0].Value.transformationClass.testTrans.GetTransformation();
-                    reihenfolgeTextTransformations.text = SortedCubesListScript.sortedCubes[0].Value.transformationClass.testTrans.GetTransformation();
-                    
                     //firstMatrixText.text = sortedCubes[0].Value.transformationClass.testTrans.GetTransformation();
                     firstMatrixText.text = SortedCubesListScript.sortedCubes[0].Value.transformationClass.testTrans.GetTransformation();
                     secondMatrixText.text = "";
@@ -478,8 +394,6 @@ namespace MarkerBasedARExample
                 }
                 else
                 {
-                    reihenfolgeText.text = "";
-                    reihenfolgeTextTransformations.text = "";
                     firstMatrixText.text = "";
                     secondMatrixText.text = "";
                     thirdMatrixText.text = "";

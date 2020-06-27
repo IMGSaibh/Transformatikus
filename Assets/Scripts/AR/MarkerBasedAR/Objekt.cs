@@ -12,6 +12,11 @@ namespace MarkerBasedARExample.MarkerBasedAR
                 "Objekt"
             };
         }
+        
+        public Objekt(String[] content) : base(content)
+        {
+        }
+        
         public override String GetTransformation()
         {
             StringBuilder sb = new StringBuilder();

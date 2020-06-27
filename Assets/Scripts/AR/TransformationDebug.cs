@@ -70,6 +70,50 @@ namespace MarkerBasedARExample
                         
                         break;
                     }
+                    case IntMatrix.ElementTypes.Pivot_Transponiert:
+                    {
+                        String[] pivot =
+                        {
+                            "(Pivot)^T"
+                        };
+                        
+                        testTrans = new Pivot(pivot);
+                        
+                        break;
+                    }
+                    case IntMatrix.ElementTypes.Objekt_Transponiert:
+                    {
+                        String[] objekt =
+                        {
+                            "(Objekt)^T"
+                        };
+                        
+                        testTrans = new Objekt(objekt);
+                        
+                        break;
+                    }
+                    case IntMatrix.ElementTypes.Objekt_Finte:
+                    {
+                        String[] objekt =
+                        {
+                            "(Objekt)^-1"
+                        };
+                        
+                        testTrans = new Objekt(objekt);
+                        
+                        break;
+                    }
+                    case IntMatrix.ElementTypes.Pivot_Finte:
+                    {
+                        String[] pivot =
+                        {
+                            "(Pivot)^-1"
+                        };
+                        
+                        testTrans = new Pivot(pivot);
+                        
+                        break;
+                    }
                     case IntMatrix.ElementTypes.Vector:
                     {
                         //dieser typ wird eigentlich nicht mehr gebraucht & kann bald weg
@@ -458,6 +502,172 @@ namespace MarkerBasedARExample
                         else
                         {
                             this.alpha = 0.0f;
+                            this.rotationAxisVector = new Vector3(0.0f, 0.0f, 1.0f);
+
+                            //else set ? for the value
+                            String alpha = "?";
+
+                            //the textual representation
+                            String[] matrix =
+                            {
+                                "cos(" + alpha + ")", "-sin(" + alpha + ")", "   0    ",
+                                "sin(" + alpha + ")", "cos(" + alpha + ")", "    0    ",
+                                "    0    ", "    0    ", "    1    "
+                            };
+
+                            Vector4 column1 = new Vector4(1f, 0f, 0f, 0f);
+                            Vector4 column2 = new Vector4(0f, 1f, 0f, 0f);
+                            Vector4 column3 = new Vector4(0f, 0f, 1f, 0f);
+                            Vector4 column4 = new Vector4(0f, 0f, 0f, 1f);
+
+                            Matrix4x4 transMatrix = new Matrix4x4(column1, column2, column3, column4);
+
+                            testTrans = new Matrix(matrix, transMatrix);
+                        }
+
+                        break;
+                    }
+                    case IntMatrix.ElementTypes.Rotation_X_neg:
+                    {
+                        //get alpha from cylinder
+                        if (cylinderObject &&
+                            cylinderObject.item.activeSelf &&
+                            cylinderObject.type == CylinderTransformation.CylinderType.Cylinder_Alpha)
+                        {
+                            this.alpha = -1.0f * cylinderObject.testTrans.skalar;
+                            this.rotationAxisVector = new Vector3(1.0f, 0.0f, 0.0f);
+
+                            //the textual representation
+                            String[] matrix =
+                            {
+                                "    1    ", "    0    ", "    0    ",
+                                "    0    ", "cos(" + this.alpha + ")", "-sin(" + this.alpha + ")",
+                                "    0    ", "sin(" + this.alpha + ")", "cos(" + this.alpha + ")"
+                            };
+
+                            //create object that holds textual matrix and the rel matrix
+                            Vector4 column1 = new Vector4(1f, 0f, 0f, 0f);
+                            Vector4 column2 = new Vector4(0f, (float) Math.Cos(this.alpha), (float) -Math.Sin(this.alpha), 0f);
+                            Vector4 column3 = new Vector4(0f, (float) Math.Sin(this.alpha), (float) Math.Cos(this.alpha), 0f);
+                            Vector4 column4 = new Vector4(0f, 0f, 0f, 1f);
+
+                            Matrix4x4 transMatrix = new Matrix4x4(column1, column2, column3, column4);
+
+                            testTrans = new Matrix(matrix, transMatrix);
+                        }
+                        else
+                        {
+                            this.alpha = -0.0f;
+                            this.rotationAxisVector = new Vector3(1.0f, 0.0f, 0.0f);
+
+                            //else set ? for the value
+                            String alpha = "?";
+                            
+                            //the textual representation
+                            String[] matrix =
+                            {
+                                "    1    ", "    0    ", "    0    ",
+                                "    0    ", "cos(" + alpha + ")", "-sin(" + alpha + ")",
+                                "    0    ", "sin(" + alpha + ")", "cos(" + alpha + ")"
+                            };
+
+                            Vector4 column1 = new Vector4(1f, 0f, 0f, 0f);
+                            Vector4 column2 = new Vector4(0f, 1f, 0f, 0f);
+                            Vector4 column3 = new Vector4(0f, 0f, 1f, 0f);
+                            Vector4 column4 = new Vector4(0f, 0f, 0f, 1f);
+
+                            Matrix4x4 transMatrix = new Matrix4x4(column1, column2, column3, column4);
+
+                            testTrans = new Matrix(matrix, transMatrix);
+                        }
+
+                        break;
+                    }
+                    case IntMatrix.ElementTypes.Rotation_Y_neg:
+                    {
+                        //get alpha from cylinder
+                        if (cylinderObject &&
+                            cylinderObject.item.activeSelf &&
+                            cylinderObject.type == CylinderTransformation.CylinderType.Cylinder_Alpha)
+                        {
+                            this.alpha = -1.0f * cylinderObject.testTrans.skalar;
+                            this.rotationAxisVector = new Vector3(0.0f, 1.0f, 0.0f);
+
+                            //the textual representation
+                            String[] matrix =
+                            {
+                                "cos(" + this.alpha + ")", "    0    ", "sin(" + this.alpha + ")",
+                                "    0    ", "    1    ", "    0    ",
+                                "-sin(" + this.alpha + ")", "     0    ", "cos(" + this.alpha + ")"
+                            };
+
+                            Vector4 column1 = new Vector4((float) Math.Cos(this.alpha), 0f, (float) Math.Sin(this.alpha), 0f);
+                            Vector4 column2 = new Vector4(0f, 1f, 0f, 0f);
+                            Vector4 column3 = new Vector4((float) -Math.Sin(this.alpha), 0f, (float) Math.Cos(this.alpha), 0f);
+                            Vector4 column4 = new Vector4(0f, 0f, 0f, 1f);
+
+                            Matrix4x4 transMatrix = new Matrix4x4(column1, column2, column3, column4);
+
+                            testTrans = new Matrix(matrix, transMatrix);
+                        }
+                        else
+                        {
+                            this.alpha = -0.0f;
+                            this.rotationAxisVector = new Vector3(0.0f, 1.0f, 0.0f);
+
+                            //else set ? for the value
+                            String alpha = "?";
+
+                            //the textual representation
+                            String[] matrix =
+                            {
+                                "cos(" + alpha + ")", "    0    ", "sin(" + alpha + ")",
+                                "    0    ", "    1    ", "    0    ",
+                                "-sin(" + alpha + ")", "     0    ", "cos(" + alpha + ")"
+                            };
+
+                            Vector4 column1 = new Vector4(1f, 0f, 0f, 0f);
+                            Vector4 column2 = new Vector4(0f, 1f, 0f, 0f);
+                            Vector4 column3 = new Vector4(0f, 0f, 1f, 0f);
+                            Vector4 column4 = new Vector4(0f, 0f, 0f, 1f);
+
+                            Matrix4x4 transMatrix = new Matrix4x4(column1, column2, column3, column4);
+
+                            testTrans = new Matrix(matrix, transMatrix);
+                        }
+
+                        break;
+                    }
+                    case IntMatrix.ElementTypes.Rotation_Z_neg:
+                    {
+                        //get alpha from cylinder
+                        if (cylinderObject && 
+                            cylinderObject.item.activeSelf &&
+                            cylinderObject.type == CylinderTransformation.CylinderType.Cylinder_Alpha)
+                        {
+                            this.alpha = -1.0f * cylinderObject.testTrans.skalar;
+                            this.rotationAxisVector = new Vector3(0.0f, 0.0f, 1.0f);
+
+                            //the textual representation
+                            String[] matrix =
+                            {
+                                "cos(" + this.alpha + ")", "-sin(" + this.alpha + ")", "   0    ",
+                                "sin(" + this.alpha + ")", "cos(" + this.alpha + ")", "    0    ",
+                                "    0    ", "    0    ", "    1    "
+                            };
+
+                            Vector4 column1 = new Vector4((float) Math.Cos(this.alpha), (float) -Math.Sin(this.alpha), 0f, 0f);
+                            Vector4 column2 = new Vector4((float) Math.Sin(this.alpha), (float) Math.Cos(this.alpha), 0f, 0f);
+                            Vector4 column3 = new Vector4(0f, 0f, 1f, 0f);
+                            Vector4 column4 = new Vector4(0f, 0f, 0f, 1f);
+
+                            Matrix4x4 transMatrix = new Matrix4x4(column1, column2, column3, column4);
+
+                            testTrans = new Matrix(matrix, transMatrix);
+                        }
+                        else
+                        {
+                            this.alpha = -0.0f;
                             this.rotationAxisVector = new Vector3(0.0f, 0.0f, 1.0f);
 
                             //else set ? for the value
