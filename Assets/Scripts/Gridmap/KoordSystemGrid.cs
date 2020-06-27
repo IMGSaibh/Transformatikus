@@ -26,6 +26,10 @@ public class KoordSystemGrid : MonoBehaviour
         int unitCountX = 0;
         int unitCountY = 0;
 
+        startX = transform.position.x;
+        startY = transform.position.y;
+        startZ = transform.position.z;
+
 
         //for (float i = 0; i <= gridSizeX; i += unitLength)
         //{

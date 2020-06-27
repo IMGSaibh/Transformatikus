@@ -22,5 +22,6 @@ public class WaitState : BaseState
             stateMachineOwner.ChangeState(new MoveState());
         if (Input.GetKeyDown(KeyCode.S))
             stateMachineOwner.ChangeState(new LoadingSceneState());
+
     }
 }

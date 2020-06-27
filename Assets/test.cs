@@ -64,32 +64,12 @@ public class test : MonoBehaviour
     }
 
     //TODO: put in helper class
-    public static void ScaleAround(GameObject target, Vector3 pivot, Vector3 newScale)
-    {
-        Vector3 A = target.transform.localPosition;
-        Vector3 B = pivot;
-     
-        Vector3 C = A - B; // diff from object pivot to desired pivot/origin
-     
-        float RS = newScale.x / target.transform.localScale.x; // relative scale factor
-     
-        // calc final position post-scale
-        Vector3 FP = B + C * RS;
-     
-        // finally, actually perform the scale/translation
-        target.transform.localScale = newScale;
-        target.transform.localPosition = FP;
-    }
+    
 
-    void scaleObject(Transform koordsystem,float scaleX, float scaleY, float scaleZ) 
+    void scaleObject(Transform koordsystem, Vector3 scaleVector) 
     {
         transform.SetParent(koordsystem);
-        Vector3 scale = koordsystem.localScale;
-        scale.x = scaleX;
-        scale.y = scaleY;
-        scale.z = scaleZ;
-
-        koordsystem.localScale = scale; 
+        koordsystem.localScale = scaleVector; 
     }
 
 
