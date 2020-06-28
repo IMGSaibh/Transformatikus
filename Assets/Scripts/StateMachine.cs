@@ -86,6 +86,7 @@ public class StateMachine : MonoBehaviour
 
     public void ButtonClicked () {
         this.confirmed = !this.confirmed;
+        Debug.Log("clicked!");
     }
 
 

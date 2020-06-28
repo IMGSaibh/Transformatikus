@@ -46,18 +46,20 @@ public class Scaling : MonoBehaviour
     
     public void ScaleAround(Vector3 newScale)
     {
-        Vector3 A = this.transform.localPosition;
-        Vector3 B = pseudoWorldCoordinateSystem.transform.position;
+        Vector3 A = transform.localPosition;
+        Vector3 B = pseudoWorldCoordinateSystem.transform.localPosition;
+        //Vector3 B = pseudoWorldCoordinateSystem.transform.position;
      
         Vector3 C = A - B; // diff from object pivot to desired pivot/origin
      
-        float RS = newScale.x / this.transform.localScale.x; // relative scale factor
+        //TODO: hier besser einstellen, weil z.B. 1.Skalierung --> 2; 2.Skalierung 0,25 --> 0.25 anstatt 0.25*2
+        float RS = newScale.x / transform.localScale.x; // relative scale factor
      
         // calc final position post-scale
         Vector3 FP = B + C * RS;
      
         // finally, actually perform the scale/translation
-        this.transform.localScale = newScale;
-        this.transform.localPosition = FP;
+        transform.localScale = newScale;
+        transform.localPosition = FP;
     }
 }

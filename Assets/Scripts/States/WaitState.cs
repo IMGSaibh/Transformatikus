@@ -43,6 +43,7 @@ public class WaitState : BaseState
                     || SortedCubesListScript.sortedCubes[1].Value.transformationClass.transformationMatrix.operation == "&")
                 {
                     Debug.Log("Fehler!");
+                    return;
                 }
 
                 //wenn der erste Würfel ein Objekt oder Pivot ist
@@ -58,8 +59,14 @@ public class WaitState : BaseState
                         IntMatrix.ElementTypes.Vector_Y
                         || SortedCubesListScript.sortedCubes[2].Value.transformationClass.transformationMatrix.elementType ==
                         IntMatrix.ElementTypes.Vector_Z
-                        )
+                        || SortedCubesListScript.sortedCubes[2].Value.transformationClass.transformationMatrix.elementType ==
+                        IntMatrix.ElementTypes.Vector_X_neg
+                        || SortedCubesListScript.sortedCubes[2].Value.transformationClass.transformationMatrix.elementType ==
+                        IntMatrix.ElementTypes.Vector_Y_neg
+                        || SortedCubesListScript.sortedCubes[2].Value.transformationClass.transformationMatrix.elementType ==
+                        IntMatrix.ElementTypes.Vector_Z_neg)
                     {
+                        
                         if (SortedCubesListScript.sortedCubes[1].Value.transformationClass.transformationMatrix.operation == "+")
                         {
                             if (stateMachineOwner.confirmed)
@@ -70,7 +77,7 @@ public class WaitState : BaseState
 
                                 //trigger state machine change
                                 //do a translation
-                                stateMachineOwner.TranslationObject.Add(SortedCubesListScript.sortedCubes[1].Value.transformationClass.transVector);
+                                stateMachineOwner.TranslationObject.Add(SortedCubesListScript.sortedCubes[2].Value.transformationClass.transVector);
 
                                 //change to not confirmed
                                 stateMachineOwner.confirmed = false;
@@ -89,7 +96,7 @@ public class WaitState : BaseState
 
                                 //trigger state machine change
                                 //do a translation
-                                stateMachineOwner.TranslationObject.Sub(SortedCubesListScript.sortedCubes[1].Value.transformationClass
+                                stateMachineOwner.TranslationObject.Sub(SortedCubesListScript.sortedCubes[2].Value.transformationClass
                                     .transVector);
 
                                 //change to not confirmed
@@ -118,7 +125,12 @@ public class WaitState : BaseState
                          IntMatrix.ElementTypes.Vector_Y
                          || SortedCubesListScript.sortedCubes[0].Value.transformationClass.transformationMatrix.elementType ==
                          IntMatrix.ElementTypes.Vector_Z
-                )
+                         || SortedCubesListScript.sortedCubes[0].Value.transformationClass.transformationMatrix.elementType ==
+                         IntMatrix.ElementTypes.Vector_X_neg
+                         || SortedCubesListScript.sortedCubes[0].Value.transformationClass.transformationMatrix.elementType ==
+                         IntMatrix.ElementTypes.Vector_Y_neg
+                         || SortedCubesListScript.sortedCubes[0].Value.transformationClass.transformationMatrix.elementType ==
+                         IntMatrix.ElementTypes.Vector_Z_neg)
                 {
                     //dann MUSS der dritte Würfel ein Objekt/Pivot sein
                     if (SortedCubesListScript.sortedCubes[2].Value.transformationClass.transformationMatrix.elementType ==
@@ -254,6 +266,7 @@ public class WaitState : BaseState
                                 //trigger state machine change
                                 //do a scaling
                                 stateMachineOwner.ScalingObject.ScaleAround(scale);
+                                //stateMachineOwner.ScalingObject.Scale(scale);
                                 
                                 //change to not confirmed
                                 stateMachineOwner.confirmed = false;
@@ -277,6 +290,8 @@ public class WaitState : BaseState
             }
             else
             {
+//                for(int k = 0; k < SortedCubesListScript.sortedCubes.Count; k++)
+//                    Debug.Log(SortedCubesListScript.sortedCubes[k].Value.GetCubeName());
                 Debug.Log("Fehler!");
             }
         }

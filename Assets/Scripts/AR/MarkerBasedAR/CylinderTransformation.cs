@@ -56,8 +56,9 @@ namespace MarkerBasedARExample.MarkerBasedAR
                         float rotation_z = (Mathf.Round(item.gameObject.transform.rotation.eulerAngles.z / 15.0f) *
                                             15.0f);
 
-                        float test = (rotation_z - 180.0f);
-                        float skalar = Mathf.Round((test / 18.0f));
+                        //float test = (rotation_z - 180.0f);
+                        //float skalar = Mathf.Round((test / 18.0f));
+                        float skalar = Mathf.Round((rotation_z / 18.0f));
 
                         //Debug.Log("Skalar: " + skalar);
 
