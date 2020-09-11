@@ -16,13 +16,15 @@ public class WaitState : BaseState
     {
         base.UpdateState();
 
-        Debug.Log("Wait State");
+        //Debug.Log("Wait State");
         
         //When cube is placed on table do somthing
         if (Input.GetKeyDown(KeyCode.M))
             stateMachineOwner.ChangeState(new MoveState());
         if (Input.GetKeyDown(KeyCode.S))
             stateMachineOwner.ChangeState(new LoadingSceneState());
+        
+        //TODO: hier muss noch zwischen Pivot und Objekt unterschieden werden und entsprechende Operationen ausgeführt werden
         
         //hier werden die eigentlichen Operationen getriggert
         //wenn genau drei Würfel gelegt wurden (ausgeschlossen ist der Zylinder)
@@ -286,7 +288,91 @@ public class WaitState : BaseState
                         Debug.Log("Fehler");
                     }
                 }
-                //TODO: Transponierte Vektoren * Matrix sind möglich, aber noch nicht reingenommen!
+                //wenn der erste Würfel ein transponierter Objekt/Pivot ist
+                //TODO: Transponierte Vektoren * Matrix
+                else if (SortedCubesListScript.sortedCubes[0].Value.transformationClass.transformationMatrix
+                             .elementType == IntMatrix.ElementTypes.Pivot_Transponiert
+                         || SortedCubesListScript.sortedCubes[0].Value.transformationClass.transformationMatrix
+                             .elementType == IntMatrix.ElementTypes.Objekt_Transponiert)
+                {
+                    //dann muss der dritte Würfel eine Matrix (entweder Skalierung oder Rotation) sein
+                    if (SortedCubesListScript.sortedCubes[2].Value.transformationClass.transformationMatrix
+                            .elementType ==
+                        IntMatrix.ElementTypes.Skalierung_X
+                        || SortedCubesListScript.sortedCubes[2].Value.transformationClass.transformationMatrix
+                            .elementType ==
+                        IntMatrix.ElementTypes.Skalierung_Y
+                        || SortedCubesListScript.sortedCubes[2].Value.transformationClass.transformationMatrix
+                            .elementType ==
+                        IntMatrix.ElementTypes.Skalierung_Z)
+                    {
+                        if (SortedCubesListScript.sortedCubes[1].Value.transformationClass.transformationMatrix.operation == "*")
+                        {
+                            if (stateMachineOwner.confirmed)
+                            {
+                                //Skalierungsvektor holen
+                                Vector3 scale = SortedCubesListScript.sortedCubes[2].Value.transformationClass.scaleVector;
+
+                                //trigger state machine change
+                                //do a scaling
+                                stateMachineOwner.ScalingObject.ScaleAround(scale);
+                                //stateMachineOwner.ScalingObject.Scale(scale);
+                                
+                                //change to not confirmed
+                                stateMachineOwner.confirmed = false;
+
+                                //change to wait state
+                                stateMachineOwner.ChangeState(new WaitState());
+                            }
+                        }
+                        else
+                        {
+                            //+ und - Operation macht keinen Sinn!
+                            Debug.Log("Fehler!");
+                        }
+                    }
+                    else if (SortedCubesListScript.sortedCubes[2].Value.transformationClass.transformationMatrix
+                                 .elementType == IntMatrix.ElementTypes.Rotation_X
+                             || SortedCubesListScript.sortedCubes[2].Value.transformationClass.transformationMatrix
+                                 .elementType == IntMatrix.ElementTypes.Rotation_Y
+                             || SortedCubesListScript.sortedCubes[2].Value.transformationClass.transformationMatrix
+                                 .elementType == IntMatrix.ElementTypes.Rotation_Z
+                             || SortedCubesListScript.sortedCubes[2].Value.transformationClass.transformationMatrix
+                                 .elementType == IntMatrix.ElementTypes.Rotation_X_neg
+                             || SortedCubesListScript.sortedCubes[2].Value.transformationClass.transformationMatrix
+                                 .elementType == IntMatrix.ElementTypes.Rotation_Y_neg
+                             || SortedCubesListScript.sortedCubes[2].Value.transformationClass.transformationMatrix
+                                 .elementType == IntMatrix.ElementTypes.Rotation_Z_neg)
+                    {
+                        if (SortedCubesListScript.sortedCubes[1].Value.transformationClass.transformationMatrix.operation == "*")
+                        {
+                            if (stateMachineOwner.confirmed)
+                            {
+                                //alpha und die Rotationsachse holen
+                                float alpha = SortedCubesListScript.sortedCubes[2].Value.transformationClass.alpha;
+                                Vector3 axis = SortedCubesListScript.sortedCubes[2].Value.transformationClass.rotationAxisVector;
+
+                                //Rotation ausführen
+                                //teilpaket.transform.RotateAround(pseudoWorldCoordinateSystem.transform.position, axis, alpha);
+
+                                //trigger state machine change
+                                //do a rotation
+                                stateMachineOwner.RotationObject.Rotate(axis, alpha);
+                                
+                                //change to not confirmed
+                                stateMachineOwner.confirmed = false;
+
+                                //change to wait state
+                                stateMachineOwner.ChangeState(new WaitState());
+                            }
+                        }
+                        else
+                        {
+                            //+ und - Operation macht keinen Sinn!
+                            Debug.Log("Fehler!");
+                        }
+                    }
+                }
             }
             else
             {
