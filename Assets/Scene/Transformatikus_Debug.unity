@@ -710,6 +710,11 @@ PrefabInstance:
       propertyPath: _requestedHeight
       value: 720
       objectReference: {fileID: 0}
+    - target: {fileID: 334942186603069247, guid: b5cef862891fd49dd839275e0febf620,
+        type: 3}
+      propertyPath: _requestedDeviceName
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5cef862891fd49dd839275e0febf620, type: 3}
 --- !u!1 &119464159

@@ -73,13 +73,24 @@ public class WaitState : BaseState
                         {
                             if (stateMachineOwner.confirmed)
                             {
-                                //Plus-Translation durchführen
-                                //Vector3 translation = sortedCubes[2].Value.transformationClass.testTrans.vector;
-                                //teilpaket.transform.position += sortedCubes[1].Value.transformationClass.transVector;
+                                Vector3 transVector = SortedCubesListScript.sortedCubes[2].Value.transformationClass.transVector;
+                                
+                                if (SortedCubesListScript.sortedCubes[0].Value.transformationClass.transformationMatrix.elementType == IntMatrix.ElementTypes.Pivot)
+                                {
+                                    //trigger state machine change
+                                    //do a minus translation
+                                    stateMachineOwner.ScalingObject.pseudoWorldCoordinateSystem.transform.position += transVector;
+                                }
+                                else
+                                {
+                                    //Plus-Translation durchführen
+                                    //Vector3 translation = sortedCubes[2].Value.transformationClass.testTrans.vector;
+                                    //teilpaket.transform.position += sortedCubes[1].Value.transformationClass.transVector;
 
-                                //trigger state machine change
-                                //do a translation
-                                stateMachineOwner.TranslationObject.Add(SortedCubesListScript.sortedCubes[2].Value.transformationClass.transVector);
+                                    //trigger state machine change
+                                    //do a translation
+                                    stateMachineOwner.TranslationObject.Add(transVector);
+                                }
 
                                 //change to not confirmed
                                 stateMachineOwner.confirmed = false;
@@ -92,14 +103,25 @@ public class WaitState : BaseState
                         {
                             if (stateMachineOwner.confirmed)
                             {
-                                //Minus-Translation durchführen
-                                //Vector3 translation = sortedCubes[2].Value.transformationClass.testTrans.vector;
-                                //teilpaket.transform.position -= sortedCubes[1].Value.transformationClass.transVector;
+                                Vector3 transVector = SortedCubesListScript.sortedCubes[2].Value.transformationClass.transVector;
+                                
+                                if (SortedCubesListScript.sortedCubes[0].Value.transformationClass.transformationMatrix
+                                        .elementType == IntMatrix.ElementTypes.Pivot)
+                                {
+                                    //trigger state machine change
+                                    //do a minus translation
+                                    stateMachineOwner.ScalingObject.pseudoWorldCoordinateSystem.transform.position -= transVector;
+                                }
+                                else
+                                {
+                                    //Minus-Translation durchführen
+                                    //Vector3 translation = sortedCubes[2].Value.transformationClass.testTrans.vector;
+                                    //teilpaket.transform.position -= sortedCubes[1].Value.transformationClass.transVector;
 
-                                //trigger state machine change
-                                //do a translation
-                                stateMachineOwner.TranslationObject.Sub(SortedCubesListScript.sortedCubes[2].Value.transformationClass
-                                    .transVector);
+                                    //trigger state machine change
+                                    //do a translation
+                                    stateMachineOwner.TranslationObject.Sub(transVector);
+                                }
 
                                 //change to not confirmed
                                 stateMachineOwner.confirmed = false;
@@ -144,15 +166,25 @@ public class WaitState : BaseState
                         {
                             if (stateMachineOwner.confirmed)
                             {
-                                //Plus-Translation durchführen
-                                //Vector3 translation = sortedCubes[0].Value.transformationClass.testTrans.vector;
-                                //teilpaket.transform.position += sortedCubes[0].Value.transformationClass.transVector;
-
-                                //trigger state machine change
-                                //do a translation
-                                stateMachineOwner.TranslationObject.Add(SortedCubesListScript.sortedCubes[0].Value.transformationClass
-                                    .transVector);
+                                Vector3 transVector = SortedCubesListScript.sortedCubes[0].Value.transformationClass.transVector;
                                 
+                                if (SortedCubesListScript.sortedCubes[2].Value.transformationClass.transformationMatrix.elementType == IntMatrix.ElementTypes.Pivot)
+                                {
+                                    //trigger state machine change
+                                    //do a translation
+                                    stateMachineOwner.ScalingObject.pseudoWorldCoordinateSystem.transform.position += transVector;
+                                }
+                                else
+                                {
+                                    //Plus-Translation durchführen
+                                    //Vector3 translation = sortedCubes[0].Value.transformationClass.testTrans.vector;
+                                    //teilpaket.transform.position += sortedCubes[0].Value.transformationClass.transVector;
+
+                                    //trigger state machine change
+                                    //do a translation
+                                    stateMachineOwner.TranslationObject.Add(transVector);
+                                }
+
                                 //change to not confirmed
                                 stateMachineOwner.confirmed = false;
 
@@ -164,15 +196,25 @@ public class WaitState : BaseState
                         {
                             if (stateMachineOwner.confirmed)
                             {
-                                //Minus-Translation durchführen
-                                //Vector3 translation = sortedCubes[0].Value.transformationClass.testTrans.vector;
-                                //teilpaket.transform.position -= sortedCubes[0].Value.transformationClass.transVector;
-
-                                //trigger state machine change
-                                //do a translation
-                                stateMachineOwner.TranslationObject.Sub(SortedCubesListScript.sortedCubes[0].Value.transformationClass
-                                    .transVector);
+                                Vector3 transVector = SortedCubesListScript.sortedCubes[0].Value.transformationClass.transVector;
                                 
+                                if (SortedCubesListScript.sortedCubes[2].Value.transformationClass.transformationMatrix.elementType == IntMatrix.ElementTypes.Pivot)
+                                {
+                                    //trigger state machine change
+                                    //do a minus translation
+                                    stateMachineOwner.ScalingObject.pseudoWorldCoordinateSystem.transform.position -= transVector;
+                                }
+                                else
+                                {
+                                    //Minus-Translation durchführen
+                                    //Vector3 translation = sortedCubes[0].Value.transformationClass.testTrans.vector;
+                                    //teilpaket.transform.position -= sortedCubes[0].Value.transformationClass.transVector;
+
+                                    //trigger state machine change
+                                    //do a translation
+                                    stateMachineOwner.TranslationObject.Sub(transVector);
+                                }
+
                                 //change to not confirmed
                                 stateMachineOwner.confirmed = false;
 
@@ -219,12 +261,21 @@ public class WaitState : BaseState
                                 float alpha = SortedCubesListScript.sortedCubes[0].Value.transformationClass.alpha;
                                 Vector3 axis = SortedCubesListScript.sortedCubes[0].Value.transformationClass.rotationAxisVector;
 
-                                //Rotation ausführen
-                                //teilpaket.transform.RotateAround(pseudoWorldCoordinateSystem.transform.position, axis, alpha);
+                                if (SortedCubesListScript.sortedCubes[2].Value.transformationClass.transformationMatrix.elementType == IntMatrix.ElementTypes.Pivot)
+                                {
+                                    //trigger state machine change
+                                    //do a rotation for the coordinate system
+                                    stateMachineOwner.RotationObject.pseudoWorldCoordinateSystem.transform.Rotate(axis,alpha);
+                                }
+                                else
+                                {
+                                    //Rotation ausführen
+                                    //teilpaket.transform.RotateAround(pseudoWorldCoordinateSystem.transform.position, axis, alpha);
 
-                                //trigger state machine change
-                                //do a rotation
-                                stateMachineOwner.RotationObject.Rotate(axis, alpha);
+                                    //trigger state machine change
+                                    //do a rotation
+                                    stateMachineOwner.RotationObject.Rotate(axis, alpha);
+                                }
                                 
                                 //change to not confirmed
                                 stateMachineOwner.confirmed = false;
@@ -265,10 +316,20 @@ public class WaitState : BaseState
                                 //Skalierungsvektor holen
                                 Vector3 scale = SortedCubesListScript.sortedCubes[0].Value.transformationClass.scaleVector;
 
-                                //trigger state machine change
-                                //do a scaling
-                                stateMachineOwner.ScalingObject.ScaleAround(scale);
-                                //stateMachineOwner.ScalingObject.Scale(scale);
+                                if (SortedCubesListScript.sortedCubes[2].Value.transformationClass.transformationMatrix
+                                        .elementType == IntMatrix.ElementTypes.Pivot)
+                                {
+                                    //trigger state machine change
+                                    //do a scaling for the coordinate system
+                                    stateMachineOwner.ScalingObject.pseudoWorldCoordinateSystem.transform.localScale = scale;
+                                }
+                                else
+                                {
+                                    //trigger state machine change
+                                    //do a scaling
+                                    stateMachineOwner.ScalingObject.ScaleAround(scale);
+                                    //stateMachineOwner.ScalingObject.Scale(scale);
+                                }
                                 
                                 //change to not confirmed
                                 stateMachineOwner.confirmed = false;
@@ -297,14 +358,11 @@ public class WaitState : BaseState
                 {
                     //dann muss der dritte Würfel eine Matrix (entweder Skalierung oder Rotation) sein
                     if (SortedCubesListScript.sortedCubes[2].Value.transformationClass.transformationMatrix
-                            .elementType ==
-                        IntMatrix.ElementTypes.Skalierung_X
+                            .elementType == IntMatrix.ElementTypes.Skalierung_X
                         || SortedCubesListScript.sortedCubes[2].Value.transformationClass.transformationMatrix
-                            .elementType ==
-                        IntMatrix.ElementTypes.Skalierung_Y
+                            .elementType == IntMatrix.ElementTypes.Skalierung_Y
                         || SortedCubesListScript.sortedCubes[2].Value.transformationClass.transformationMatrix
-                            .elementType ==
-                        IntMatrix.ElementTypes.Skalierung_Z)
+                            .elementType == IntMatrix.ElementTypes.Skalierung_Z)
                     {
                         if (SortedCubesListScript.sortedCubes[1].Value.transformationClass.transformationMatrix.operation == "*")
                         {
@@ -312,12 +370,22 @@ public class WaitState : BaseState
                             {
                                 //Skalierungsvektor holen
                                 Vector3 scale = SortedCubesListScript.sortedCubes[2].Value.transformationClass.scaleVector;
-
-                                //trigger state machine change
-                                //do a scaling
-                                stateMachineOwner.ScalingObject.ScaleAround(scale);
-                                //stateMachineOwner.ScalingObject.Scale(scale);
                                 
+                                if (SortedCubesListScript.sortedCubes[0].Value.transformationClass.transformationMatrix
+                                        .elementType == IntMatrix.ElementTypes.Pivot_Transponiert)
+                                {
+                                    //trigger state machine change
+                                    //do a scaling for the coordinate system
+                                    stateMachineOwner.ScalingObject.pseudoWorldCoordinateSystem.transform.localScale = scale;
+                                }
+                                else
+                                {
+                                    //trigger state machine change
+                                    //do a scaling
+                                    stateMachineOwner.ScalingObject.ScaleAround(scale);
+                                    //stateMachineOwner.ScalingObject.Scale(scale);
+                                }
+
                                 //change to not confirmed
                                 stateMachineOwner.confirmed = false;
 
@@ -352,13 +420,23 @@ public class WaitState : BaseState
                                 float alpha = SortedCubesListScript.sortedCubes[2].Value.transformationClass.alpha;
                                 Vector3 axis = SortedCubesListScript.sortedCubes[2].Value.transformationClass.rotationAxisVector;
 
-                                //Rotation ausführen
-                                //teilpaket.transform.RotateAround(pseudoWorldCoordinateSystem.transform.position, axis, alpha);
+                                if (SortedCubesListScript.sortedCubes[0].Value.transformationClass.transformationMatrix
+                                        .elementType == IntMatrix.ElementTypes.Pivot_Transponiert)
+                                {
+                                    //trigger state machine change
+                                    //do a scaling for the coordinate system
+                                    stateMachineOwner.RotationObject.pseudoWorldCoordinateSystem.transform.Rotate(axis,alpha);
+                                }
+                                else
+                                {
+                                    //Rotation ausführen
+                                    //teilpaket.transform.RotateAround(pseudoWorldCoordinateSystem.transform.position, axis, alpha);
 
-                                //trigger state machine change
-                                //do a rotation
-                                stateMachineOwner.RotationObject.Rotate(axis, alpha);
-                                
+                                    //trigger state machine change
+                                    //do a rotation
+                                    stateMachineOwner.RotationObject.Rotate(axis, alpha);
+                                }
+
                                 //change to not confirmed
                                 stateMachineOwner.confirmed = false;
 
