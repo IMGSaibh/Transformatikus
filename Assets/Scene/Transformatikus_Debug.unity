@@ -713,7 +713,7 @@ PrefabInstance:
     - target: {fileID: 334942186603069247, guid: b5cef862891fd49dd839275e0febf620,
         type: 3}
       propertyPath: _requestedDeviceName
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5cef862891fd49dd839275e0febf620, type: 3}
@@ -786,7 +786,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 119464159}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -797,7 +797,9 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9f56a044a3730ea429f4a5556b878d9b, type: 2}
+  - {fileID: 2100000, guid: 62a179c24d1b6114b9f61f5f2aeae322, type: 2}
+  - {fileID: 2100000, guid: 6d369e93d66bd834aa9af5a4c38a5134, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -825,7 +827,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 119464159}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 6489912302325886157, guid: 4784a86160b45a64c9fee861876bfc51, type: 3}
 --- !u!20 &189253396 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 2000000, guid: 88bd7da02dc70d2409c6d485c3020dab,
@@ -1901,6 +1903,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: 4784a86160b45a64c9fee861876bfc51,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: 4784a86160b45a64c9fee861876bfc51,
         type: 3}
       propertyPath: m_Name
@@ -2045,12 +2052,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4bc89f65172b774185e941294118d0a, type: 3}
---- !u!1 &1472112460 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 8bfcd67e9fe20e74197daf5fd4026f0e,
-    type: 3}
-  m_PrefabInstance: {fileID: 1037667790}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1519998429
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2409,7 +2410,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
---- !u!114 &1730711360
+--- !u!114 &1730711364
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2418,16 +2419,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1730711356}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d8951d351f5a7f4597d77dba4c06c3b, type: 3}
+  m_Script: {fileID: 11500000, guid: 807688e0d32c48778c6dbd5b7e1f9a7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneSwitch: {fileID: 0}
   button: {fileID: 320547491}
   confirmed: 0
-  targetObject: {fileID: 1472112460}
+  targetObject: {fileID: 1730711356}
   translationObject: {fileID: 1730711359}
   rotationObject: {fileID: 1730711357}
   scalingObject: {fileID: 1730711358}
-  sceneSwitch: {fileID: 0}
 --- !u!1001 &1813448277
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2761,12 +2762,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d8951d351f5a7f4597d77dba4c06c3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button: {fileID: 320547491}
-  confirmed: 0
-  targetObject: {fileID: 0}
-  translationObject: {fileID: 2141585994}
-  rotationObject: {fileID: 2141585996}
-  scalingObject: {fileID: 2141585995}
   sceneSwitch: {fileID: 0}
 --- !u!114 &2141585994
 MonoBehaviour:

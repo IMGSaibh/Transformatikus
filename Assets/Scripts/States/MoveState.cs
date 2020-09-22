@@ -12,26 +12,26 @@ public class MoveState : BaseState
 
         //target position of IP-Paket-Piece and position of IP-Packet
         //targetPosition = new Vector3(8, 0, 0);
-        cubeInputVector = stateMachineOwner.GetComponent<StateMachine>().targetObject.transform.position;
+        cubeInputVector = stateMachineOwner.transform.position;
     }
 
     public override void UpdateState()
     {
         base.UpdateState();
 
-        Debug.Log("Move State");
+        //Debug.Log("Move State");
 
         // Calculating the movement of IP-Packet-Piece
         Vector3 direction = cubeInputVector - stateMachineOwner.transform.position;
 
         // Passing calculation to Movement component
-        stateMachineOwner.TranslationObject.Add(direction);
+        //TODO: wirklich so richtig bzw. notwendig?
+        stateMachineOwner.GetComponent<GameStateMachine>().TranslationObject.Add(direction);
 
         if (cubeInputVector == stateMachineOwner.transform.position)
         {
             Debug.Log("Ziel erreicht");
             stateMachineOwner.ChangeState(new WaitState());
-
         }
     }
 

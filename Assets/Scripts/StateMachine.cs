@@ -5,46 +5,15 @@ using UnityEngine.UI;
 
 public class StateMachine : MonoBehaviour
 {
-    /// <summary>
-    /// Bestätigungsbutton.
-    /// </summary>
-    public Button button;
-        
-    public bool confirmed = false;
-    
     // Reference to currently operating state.
     private BaseState currentState;
-
-    public GameObject targetObject;
-
-    // Reference to movement script of IP-Paket-Piece.
-    [SerializeField]
-    private Translation translationObject;
-    public Translation TranslationObject => translationObject;
-    
-    // Reference to rotation script of IP-Paket-Piece.
-    [SerializeField]
-    private Rotation rotationObject;
-    public Rotation RotationObject => rotationObject;
-    
-    // Reference to scaling script of IP-Paket-Piece.
-    [SerializeField]
-    private Scaling scalingObject;
-    public Scaling ScalingObject => scalingObject;
 
     [SerializeField]
     private SceneSwitch sceneSwitch;
     public SceneSwitch SceneSwitch => sceneSwitch;
-
-
-    private void Start() 
+    
+    protected virtual void Start() 
     {
-        //add button listener
-        button.onClick.AddListener(delegate()
-        {
-            this.ButtonClicked();
-        });
-        
         //create new state like this
         //ChangeState(new WaitState());
 
@@ -56,7 +25,7 @@ public class StateMachine : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void Update()
+    protected virtual void Update()
     {
         if (currentState != null)
             currentState.UpdateState();
@@ -83,11 +52,4 @@ public class StateMachine : MonoBehaviour
             currentState.PrepareState();
         }
     }
-
-    public void ButtonClicked () {
-        this.confirmed = !this.confirmed;
-        Debug.Log("clicked!");
-    }
-
-
 }

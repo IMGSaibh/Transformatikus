@@ -153,7 +153,7 @@ namespace MarkerBasedARExample
             //gameObject.transform.localScale = new Vector3 (webCamTextureMat.cols (), webCamTextureMat.rows (), 1);
             
             //auf dem Bildschirm verschieben
-            gameObject.transform.position = new Vector3(25.0f, -5f, 0f);
+            //gameObject.transform.position = new Vector3(25.0f, -5f, 0f);
 
             Debug.Log ("Screen.width " + Screen.width + " Screen.height " + Screen.height + " Screen.orientation " + Screen.orientation);
 
@@ -164,7 +164,6 @@ namespace MarkerBasedARExample
             float widthScale = (float)Screen.width / width;
             float heightScale = (float)Screen.height / height;
             if (widthScale < heightScale) {
-                Debug.Log("bin hier drin!");
                 Camera.main.orthographicSize = (width * (float)Screen.height / (float)Screen.width) / 2;
                 imageSizeScale = (float)Screen.height / (float)Screen.width;
             } else {
