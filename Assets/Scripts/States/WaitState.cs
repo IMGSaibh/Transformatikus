@@ -16,9 +16,7 @@ public class WaitState : BaseState
     {
         base.UpdateState();
         
-        //When cube is placed on table do somthing
-        if (Input.GetKeyDown(KeyCode.M))
-            stateMachineOwner.ChangeState(new MoveState());
+        //When cube is placed on table enter game transformatics
         if (Input.GetKeyDown(KeyCode.S))
             stateMachineOwner.ChangeState(new LoadingSceneState());
         

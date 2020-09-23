@@ -15,6 +15,7 @@ public class IdleStateMachine : StateMachine
         IdleState idleState = new IdleState();
         
         base.ChangeState(idleState);
+
     }
 
     // Update is called once per frame

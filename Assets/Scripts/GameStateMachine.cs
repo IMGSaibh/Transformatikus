@@ -28,6 +28,10 @@ public class GameStateMachine : StateMachine
     private Scaling scalingObject;
     public Scaling ScalingObject => scalingObject;
 
+    public GameObject Ipaket_target;
+    public GameObject Ipaket;
+
+
     private new void Start()
     {
         base.Start();
@@ -46,6 +50,10 @@ public class GameStateMachine : StateMachine
     private new void Update()
     {
         base.Update();
+        Debug.Log("GameStatemachine");
+
+    
+
     }
 
     public void ButtonClicked () {

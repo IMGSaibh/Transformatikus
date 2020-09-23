@@ -14,8 +14,17 @@ public class GameState : BaseState
     public override void UpdateState()
     {
         base.UpdateState();
-        
+        Debug.Log("GameState");
+
+
         GameStateMachine game = stateMachineOwner.GetComponent<GameStateMachine>();
+
+        if (game.Ipaket.transform.position.Equals(game.Ipaket_target.transform.position))
+        {
+            game.SceneSwitch.SwitchToScene("Level_2");
+        }
+
+
 
         //hier werden die eigentlichen Operationen getriggert
         //wenn genau drei Würfel gelegt wurden (ausgeschlossen ist der Zylinder)
