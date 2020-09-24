@@ -14,18 +14,15 @@ public class GameState : BaseState
     public override void UpdateState()
     {
         base.UpdateState();
-        Debug.Log("GameState");
-
-
+        //Debug.Log("GameState");
+        
         GameStateMachine game = stateMachineOwner.GetComponent<GameStateMachine>();
 
         if (game.Ipaket.transform.position.Equals(game.Ipaket_target.transform.position))
         {
             game.SceneSwitch.SwitchToScene("Level_2");
         }
-
-
-
+        
         //hier werden die eigentlichen Operationen getriggert
         //wenn genau drei Würfel gelegt wurden (ausgeschlossen ist der Zylinder)
         if (SortedCubesListScript.sortedCubes != null
@@ -47,7 +44,7 @@ public class GameState : BaseState
                     || SortedCubesListScript.sortedCubes[1].Value.transformationClass.transformationMatrix.operation ==
                     "&")
                 {
-                    Debug.Log("Fehler!");
+                    //Debug.Log("Fehler!");
                     return;
                 }
 
@@ -109,7 +106,7 @@ public class GameState : BaseState
                                 game.confirmed = false;
 
                                 //change to wait state
-                                stateMachineOwner.ChangeState(new WaitState());
+                                //stateMachineOwner.ChangeState(new WaitState());
                             }
                         }
                         else if (SortedCubesListScript.sortedCubes[1].Value.transformationClass.transformationMatrix
@@ -142,19 +139,19 @@ public class GameState : BaseState
                                 game.confirmed = false;
 
                                 //change to wait state
-                                stateMachineOwner.ChangeState(new WaitState());
+                                //stateMachineOwner.ChangeState(new WaitState());
                             }
                         }
                         else
                         {
                             //*-Operation macht keinen Sinn!
-                            Debug.Log("Fehler!");
+                            //Debug.Log("Fehler!");
                         }
                     }
                     //ansonsten Fehler!
                     else
                     {
-                        Debug.Log("Fehler!");
+                        //Debug.Log("Fehler!");
                     }
                 }
                 //wenn der erste Würfel ein Translations-Würfel ist
@@ -215,7 +212,7 @@ public class GameState : BaseState
                                 game.confirmed = false;
 
                                 //change to wait state
-                                stateMachineOwner.ChangeState(new WaitState());
+                                //stateMachineOwner.ChangeState(new WaitState());
                             }
                         }
                         else if (SortedCubesListScript.sortedCubes[1].Value.transformationClass.transformationMatrix
@@ -248,18 +245,18 @@ public class GameState : BaseState
                                 game.confirmed = false;
 
                                 //change to wait state
-                                stateMachineOwner.ChangeState(new WaitState());
+                                //stateMachineOwner.ChangeState(new WaitState());
                             }
                         }
                         else
                         {
                             //*-Operation macht keinen Sinn!
-                            Debug.Log("Fehler!");
+                            //Debug.Log("Fehler!");
                         }
                     }
                     else
                     {
-                        Debug.Log("Fehler");
+                        //Debug.Log("Fehler");
                     }
                 }
                 //wenn der erste Würfel eine Rotations-Matrix ist
@@ -321,18 +318,18 @@ public class GameState : BaseState
                                 game.confirmed = false;
 
                                 //change to wait state
-                                stateMachineOwner.ChangeState(new WaitState());
+                                //stateMachineOwner.ChangeState(new WaitState());
                             }
                         }
                         else
                         {
                             //+ und - Operation macht keinen Sinn!
-                            Debug.Log("Fehler!");
+                            //Debug.Log("Fehler!");
                         }
                     }
                     else
                     {
-                        Debug.Log("Fehler");
+                        //Debug.Log("Fehler");
                     }
                 }
                 //wenn der erste Würfel eine Skalierungs-Matrix ist
@@ -382,18 +379,18 @@ public class GameState : BaseState
                                 game.confirmed = false;
 
                                 //change to wait state
-                                stateMachineOwner.ChangeState(new WaitState());
+                                //stateMachineOwner.ChangeState(new WaitState());
                             }
                         }
                         else
                         {
                             //+ und - Operation macht keinen Sinn!
-                            Debug.Log("Fehler!");
+                            //Debug.Log("Fehler!");
                         }
                     }
                     else
                     {
-                        Debug.Log("Fehler");
+                        //Debug.Log("Fehler");
                     }
                 }
                 //wenn der erste Würfel ein transponierter Objekt/Pivot ist
@@ -439,13 +436,13 @@ public class GameState : BaseState
                                 game.confirmed = false;
 
                                 //change to wait state
-                                stateMachineOwner.ChangeState(new WaitState());
+                                //stateMachineOwner.ChangeState(new WaitState());
                             }
                         }
                         else
                         {
                             //+ und - Operation macht keinen Sinn!
-                            Debug.Log("Fehler!");
+                            //Debug.Log("Fehler!");
                         }
                     }
                     else if (SortedCubesListScript.sortedCubes[2].Value.transformationClass.transformationMatrix
@@ -492,13 +489,13 @@ public class GameState : BaseState
                                 game.confirmed = false;
 
                                 //change to wait state
-                                stateMachineOwner.ChangeState(new WaitState());
+                                //stateMachineOwner.ChangeState(new WaitState());
                             }
                         }
                         else
                         {
                             //+ und - Operation macht keinen Sinn!
-                            Debug.Log("Fehler!");
+                            //Debug.Log("Fehler!");
                         }
                     }
                 }
@@ -507,7 +504,7 @@ public class GameState : BaseState
             {
                 //                for(int k = 0; k < SortedCubesListScript.sortedCubes.Count; k++)
                 //                    Debug.Log(SortedCubesListScript.sortedCubes[k].Value.GetCubeName());
-                Debug.Log("Fehler!");
+                //Debug.Log("Fehler!");
             }
         }
         else

@@ -50,10 +50,6 @@ public class GameStateMachine : StateMachine
     private new void Update()
     {
         base.Update();
-        Debug.Log("GameStatemachine");
-
-    
-
     }
 
     public void ButtonClicked () {

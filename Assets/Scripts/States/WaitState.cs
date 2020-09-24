@@ -20,6 +20,6 @@ public class WaitState : BaseState
         if (Input.GetKeyDown(KeyCode.S))
             stateMachineOwner.ChangeState(new LoadingSceneState());
         
-        Debug.Log("im WaitState");
+        //Debug.Log("im WaitState");
     }
 }
