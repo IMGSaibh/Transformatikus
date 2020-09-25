@@ -10,7 +10,7 @@ public class GameStateMachine : StateMachine
     /// Bestätigungsbutton.
     /// </summary>
     public Button button;
-        
+    public string level;
     public bool confirmed = false;
     
     // Reference to movement script of IP-Paket-Piece.

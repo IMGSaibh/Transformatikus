@@ -20,7 +20,7 @@ public class GameState : BaseState
 
         if (game.Ipaket.transform.position.Equals(game.Ipaket_target.transform.position))
         {
-            game.SceneSwitch.SwitchToScene("Level_2");
+            game.SceneSwitch.SwitchToScene(game.level);
         }
         
         //hier werden die eigentlichen Operationen getriggert
