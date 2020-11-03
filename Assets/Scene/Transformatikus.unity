@@ -252,6 +252,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneSwitch: {fileID: 76868223}
   button: {fileID: 2012323261}
+  level: Level_2
   confirmed: 0
   translationObject: {fileID: 76868222}
   rotationObject: {fileID: 76868221}
