@@ -759,6 +759,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ARCamera
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 88bd7da02dc70d2409c6d485c3020dab, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 88bd7da02dc70d2409c6d485c3020dab, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
